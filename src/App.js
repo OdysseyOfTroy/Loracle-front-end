@@ -1,12 +1,15 @@
 import React from 'react';
-import './App.css';
-import Navbar from "./Components/Navbar/Navbar";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import MainPage from "./components/MainPage";
+import MainPageAlt from "./components/MainPageAlt"
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-    </div>
+    <Router>
+      <Route path="/" exact component={MainPageAlt}/>
+    </Router>
   );
 }
 
