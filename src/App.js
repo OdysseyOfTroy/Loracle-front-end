@@ -7,11 +7,13 @@ import MainPageAlt from "./components/MainPageAlt"
 import ContainersList from './components/ContainerList'
 import CategoryList from './components/CategoryList'
 import IdentifierList from './components/IdentifierList'
+import InformationList from './components/InformationList'
+import UserForm from './components/UserForm'
 
 function App() {
   return (
     <Router>
-      <Route path="/" exact component={IdentifierList}/>
+      <Route path="/"  component={UserForm}/>
     </Router>
   );
 }
