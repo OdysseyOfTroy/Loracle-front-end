@@ -8,13 +8,13 @@ function MainPage() {
         <Sidebar width={200} height={"100vh"}>
             <div className="category"> group 
                 <p className="Identifier">Nav item</p>
-                <p classname="Identifier">Nav item</p>
+                <p className="Identifier">Nav item</p>
             </div>
 
             <div className="category"> group
-                <p classname="Identifier">Nav item</p>
-                <p classname="Identifier">Nav item</p>
-                <p classname="Identifier">Nav item</p>
+                <p className="Identifier">Nav item</p>
+                <p className="Identifier">Nav item</p>
+                <p className="Identifier">Nav item</p>
             </div>
         </Sidebar>
     </div>
