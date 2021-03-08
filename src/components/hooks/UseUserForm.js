@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const UseUserForm = (callback) => {
+const UseUserForm = (initialValues, callback) => {
 
-  const[inputs, setInputs] = useState({});
+  const[inputs, setInputs] = useState(initialValues);
 
   const handleSubmit = (event) => {
     if (event) {

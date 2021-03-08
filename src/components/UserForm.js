@@ -2,7 +2,10 @@ import React from 'react';
 import UseUserForm  from './hooks/UseUserForm';
 
 const UserForm = () => {
-    const {inputs, handleInputChange, handleSubmit} = UseUserForm('');
+  const userForm = () => {
+    alert("user created!")
+  }
+    const {inputs, handleInputChange, handleSubmit} = UseUserForm({Email: '', DisplayName: '', Password: ''},userForm);
 
   return (
     <form onSubmit={handleSubmit}>
