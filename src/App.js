@@ -5,6 +5,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import MainPage from "./components/MainPage";
 import MainPageAlt from "./components/MainPageAlt";
 import Login from './components/LogIn';
+import SignUp from './components/Signup';
 
 function App() {
   return (
