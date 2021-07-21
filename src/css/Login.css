@@ -1,11 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@1,500&display=swap');
+
 @media all and (min-width: 480px) {
+
+    .Page {
+        width: 100%;
+    }
+    .Background {
+        position: absolute;
+        width: 65%;
+        height: 100%;
+        background-image: url(./Loracle_Logo.png);
+        background-position-y: 100%;
+        background-position-x: 80%;
+    }
+
+    .Title {
+        color: rgb(146, 15, 146);
+        padding-left:10%;
+        padding-top: 5%;
+        font-size: 400%;
+        font-family: 'Vollkorn', serif;
+
+    }
+    .Login-Container {
+        position: absolute;
+        right: 0;
+        width: 35%;
+        height: 100%;
+        background-color: rgb(20, 20, 20);
+        color: white;
+    }
+
     .Login {
-        padding: 60px 0;
+        padding-top: 20%;
     }
   
     .Login form {
         margin: 0 auto;
-        max-width: 320px;
+        max-width: 80%;
+        font-size: 150%;
+    }
+
+    #email {
+        margin-bottom: 20%;
+    }
+
+    #password {
+        margin-bottom: 20%;
     }
 
     .Signup {
