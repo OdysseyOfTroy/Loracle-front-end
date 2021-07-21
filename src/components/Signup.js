@@ -21,6 +21,13 @@ export default function SignUp() {
   }
 
   return (
+    <div className="page">
+    <div className="Background">
+    </div>
+    <div className="signup-Container">
+    <div >
+        <h1 className="Title">Loracle</h1>
+    </div>
     <div className="Signup">
 
       <Form onSubmit={handleSubmit}>
@@ -79,6 +86,8 @@ export default function SignUp() {
         </Button>
         
       </Form>
+    </div>
+    </div>
     </div>
   );
 }
