@@ -1,36 +1,84 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
+import "../css/Login.css";
 
-export default class SignUp extends Component {
-    render() {
-        return (
-            <form>
-                <h3>Sign Up</h3>
+export default function SignUp() {
+  const [display_name, setDisplay_Name] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [conPassword, setConPassword] = useState("");
+  const [dob, setDob] = useState("");
 
-                <div className="form-group">
-                    <label>First name</label>
-                    <input type="text" className="form-control" placeholder="First name" />
-                </div>
+  function validateForm() {
+    return email.length > 0 && password.length > 0;
+  }
 
-                <div className="form-group">
-                    <label>Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
-                </div>
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
 
-                <div className="form-group">
-                    <label>Email address</label>
-                    <input type="email" className="form-control" placeholder="Enter email" />
-                </div>
+  return (
+    <div className="Signup">
 
-                <div className="form-group">
-                    <label>Password</label>
-                    <input type="password" className="form-control" placeholder="Enter password" />
-                </div>
+      <Form onSubmit={handleSubmit}>
 
-                <button type="submit" className="btn btn-primary btn-block">Sign Up</button>
-                <p className="forgot-password text-right">
-                    Already registered <a href="#">sign in?</a>
-                </p>
-            </form>
-        );
-    }
+
+        <Form.Group size="lg" controlId="display_name">
+            <Form.Label>Display Name</Form.Label>
+            <Form.Control
+                autoFocus
+                type="Display Name"
+                value={display_name}
+                onChange={(e) => setDisplay_Name(e.target.value)}
+            />
+        </Form.Group>
+
+        <Form.Group size="lg" controlId="email">
+          <Form.Label>Email</Form.Label>
+          <Form.Control
+            autoFocus
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group size="lg" controlId="dob">
+        <Form.Label>Date of Birth</Form.Label>
+        <div className="dob">
+            <DatePicker
+            selected={dob}
+            onChange={date => setDob(date)}
+            />
+        </div>
+        </Form.Group>
+
+        <Form.Group size="lg" controlId="password">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group size="lg" controlId="passwordconfirmation">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            type="password"
+            value={conPassword}
+            onChange={(e) => setConPassword(e.target.value)}
+          />
+        </Form.Group>
+
+        <Button block size="lg" type="submit" disabled={!validateForm()}>
+          Sign Up
+        </Button>
+        
+      </Form>
+    </div>
+  );
 }
