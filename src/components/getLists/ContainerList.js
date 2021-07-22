@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ContainersList = props => {
+const ContainerList = props => {
 
   useEffect(() => {
     axios.get('/users/1/containers')
@@ -15,11 +15,11 @@ const ContainersList = props => {
         <div className="container-list">
           {containers.map((container, index) => (
               <div key={index}>
-                {container.title} | {container.description}
+                {container.title} 
               </div>
             ))}
         </div>
       </div>
   )
 };
-export default ContainersList;
+export default ContainerList;
