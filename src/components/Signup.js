@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
-import "../css/Login.css";
+import "../css/Signup.css";
 
 export default function SignUp() {
   const [display_name, setDisplay_Name] = useState("");
@@ -21,6 +21,13 @@ export default function SignUp() {
   }
 
   return (
+    <div className="page">
+    <div className="Background">
+    </div>
+    <div className="signup-Container">
+    <div >
+        <h1 className="Title">Loracle</h1>
+    </div>
     <div className="Signup">
 
       <Form onSubmit={handleSubmit}>
@@ -79,6 +86,8 @@ export default function SignUp() {
         </Button>
         
       </Form>
+    </div>
+    </div>
     </div>
   );
 }

@@ -16,6 +16,13 @@ export default function Login() {
   }
 
   return (
+    <div className="page">
+    <div className="Background">
+    </div>
+      <div className="Login-Container">
+    <div >
+        <h1 className="Title">Loracle</h1>
+    </div>
     <div className="Login">
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
@@ -38,8 +45,11 @@ export default function Login() {
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>
-        
+
       </Form>
+    </div>
+    </div>
+
     </div>
   );
 }

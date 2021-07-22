@@ -5,7 +5,6 @@
     .Page {
         width: 100%;
     }
-
     .Background {
         position: absolute;
         width: 65%;
@@ -23,7 +22,8 @@
         font-family: 'Vollkorn', serif;
 
     }
-    .Login-Container {
+
+    .signup-Container {
         position: absolute;
         right: 0;
         width: 35%;
@@ -32,21 +32,28 @@
         color: white;
     }
 
-    .Login {
+    .Signup {
         padding-top: 20%;
     }
-  
-    .Login form {
+
+    .Signup form {
         margin: 0 auto;
         max-width: 80%;
-        font-size: 150%;
     }
+}
+
+#display_name {
+    margin-bottom: 5%;
 }
 
 #email {
-    margin-bottom: 20%;
+    margin-bottom: 5%;
+}
+
+.dob {
+    margin-bottom: 5%;
 }
 
 #password {
-    margin-bottom: 20%;
+    margin-bottom: 5%;
 }
