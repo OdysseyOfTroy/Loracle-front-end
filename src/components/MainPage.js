@@ -7,21 +7,6 @@ import { Jumbotron } from "react-bootstrap";
 
 function MainPage() {
     return (
-<<<<<<< HEAD
-    <div className="Nav">
-        <Sidebar width={200} height={"100vh"}>
-            <div className="category"> group 
-                <p className="Identifier">Nav item</p>
-                <p className="Identifier">Nav item</p>
-            </div>
-
-            <div className="category"> group
-                <p className="Identifier">Nav item</p>
-                <p className="Identifier">Nav item</p>
-                <p className="Identifier">Nav item</p>
-            </div>
-        </Sidebar>
-=======
     <div> 
         <div className="page">
             <ProSidebar >
@@ -49,7 +34,6 @@ function MainPage() {
         </Jumbotron>
         </div>
 
->>>>>>> main
     </div>
        );
 }
