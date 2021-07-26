@@ -8,8 +8,13 @@ import CategoriesList from "../getLists/CategoryList";
 import IdentifierList from "../getLists/IdentifierList";
 import InformationList from "../getLists/InformationList";
 
-export const SidebarData = [
+//data that is passed into the Sidebar
+const SidebarData = [
     {
-        title:{ContainerList}
+        title: 'Dashboard',
+        path: '/Dashboard',
+        icon: <AiIcons.AiOutlineHome />
     }
 ]
+
+export default SidebarData;

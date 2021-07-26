@@ -3,8 +3,40 @@ import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { sidebarData } from "./sidebarData-component"; 
+import  sidebarData from "./SidebarData-component"; 
+import  SubMenu  from "./SubMenu";
+import categories from "../getLists/CategoryList";
 
+//sets sidebar state and generates sidebar
+const Sidebar = () => {
+    const [sidebar, setSidebar] = useState(false)
+
+    const showSidebar = () => setSidebar(!sidebar)
+    return (   
+        <React.Fragment>
+            <Nav>
+                <NavIcon to='#'>
+                    <FaIcons.FaBars onClick={showSidebar}/>
+                </NavIcon>
+            </Nav>
+            <SidebarNav sidebar={sidebar}>
+                <SidebarWrap>
+                <NavIcon to='#'>
+                    <AiIcons.AiOutlineClose onClick={showSidebar}/>
+                </NavIcon>
+                {sidebarData.map((item, index) => {
+                    return <SubMenu item={item} key={index}/>
+                })}
+                </SidebarWrap>
+            </SidebarNav>
+        </React.Fragment>
+    );
+};
+
+//exports sidebar component;
+export default Sidebar;
+
+//styling for sidebar 
 const Nav = styled.div
 `
     height: 80px;
@@ -45,27 +77,3 @@ const SidebarWrap = styled.div
     width: 100%;
 
 `
-
-const Sidebar = () => {
-    const [sidebar, setSidebar] = useState(false)
-
-    const showSidebar = () => setSidebar(!sidebar)
-    return (   
-        <React.Fragment>
-            <Nav>
-                <NavIcon to='#'>
-                    <FaIcons.FaBars onClick={showSidebar}/>
-                </NavIcon>
-            </Nav>
-            <SidebarNav sidebar={sidebar}>
-                <SidebarWrap>
-                <NavIcon to='#'>
-                    <AiIcons.AiOutlineClose onClick={showSidebar}/>
-                </NavIcon>
-                </SidebarWrap>
-            </SidebarNav>
-        </React.Fragment>
-    );
-};
-
-export default Sidebar;
