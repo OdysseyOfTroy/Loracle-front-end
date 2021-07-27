@@ -21,7 +21,7 @@ export default function Login() {
 
     AuthenticationService.login(email, password)
       .then(() => {
-        window.location.replace("/Home");
+        window.location.replace("/Sidebar");
       })
   },
   [email, password]
