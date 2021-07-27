@@ -1,6 +1,6 @@
 import React, {useState } from "react";
 import SidebarItem from "./SidebarItem.Component";
-import NavigationService from "../Connections/Navigation.service";
+import SidebarService from "../Connections/Sidebar.service";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import styled from "styled-components";
@@ -26,7 +26,7 @@ staticLinks.forEach((link) => {
 
 });
 
-NavigationService.index()
+SidebarService.index()
     .then((response) => {
         response.data.forEach((link) => {
             <SidebarItem
