@@ -13,8 +13,11 @@ function Dashboard(props) {
     (id) => {
       DashboardDataService.index()
         .then((response) => {
+        if(response!== undefined) {
         setContainers(response.data);
+      
         setCurrentId(id || null);
+        }
       });
     },
     [setContainers, setCurrentId]
