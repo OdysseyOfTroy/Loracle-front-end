@@ -33,8 +33,7 @@ const [currentId, setCurrentId] = useState([null]);
 //Callback to update the shown categories
 const getCategories = useCallback(() => { 
 SidebarService.index()
-    .then((response) => {
-        console.log(response)   
+    .then((response) => {  
         setCategories(response.data);
     })
     .catch((err) => {
@@ -48,8 +47,6 @@ SidebarService.index()
         getCategories();
     }, [getCategories]);
 
-    console.log(categories)
-
     categories.forEach((category) => {
         <SidebarItem
         id={category.id}
@@ -57,8 +54,6 @@ SidebarService.index()
         path={category.path}
         />
     })
-
-    
 
     const [sidebar, setSidebar] = useState(false)
 
