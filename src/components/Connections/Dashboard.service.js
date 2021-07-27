@@ -1,8 +1,8 @@
-import http from "http-common"
+import http from "../../http-common"
 
-class ContainerDataService {
+class DashboardDataService {
     index() {
-        return http.get("/containers");
+        return http.get("/users/1/containers");
     }
 
     get(id) {
@@ -17,3 +17,5 @@ class ContainerDataService {
         return http.post("/containers", params);
     }
 }
+
+export default new DashboardDataService;

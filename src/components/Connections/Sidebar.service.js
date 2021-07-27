@@ -1,10 +1,10 @@
 import http from "../../http-common";
 
-class NavigationService {
+class SidebarService {
     index() {
         return http.get("/users/1/containers/1/categories");
     }
 
 }
 
-export default new NavigationService();
+export default new SidebarService();
