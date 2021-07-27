@@ -12,10 +12,6 @@ export default function Login() {
     return email.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
   const onSubmit = useCallback((e) => {
     e.preventDefault();
 

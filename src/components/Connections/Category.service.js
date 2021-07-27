@@ -2,7 +2,7 @@ import http from "../../http-common";
 
 class CategoryDataService {
     index() {
-        return http.get("/containers/${containerId/categories");
+        return http.get("/containers/${containerId}/categories");
     }
 
     get(containerId, id) {
