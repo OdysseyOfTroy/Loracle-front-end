@@ -12,7 +12,7 @@ function Sidebar(props) {
         {
             id: -1,
             title: 'Dashboard',
-            path: '/Dashboard'
+            path: '/Home'
         }
     ]
 
@@ -77,7 +77,7 @@ SidebarService.index()
                         <AiIcons.AiOutlineClose onClick={showSidebar}/>
                     </NavIcon>
                     {staticLinks.map((link, index) => {
-                        return <SidebarItem title={link.title} key={index}/>
+                        return <SidebarItem title={link.title} key={index} path={link.path}/>
                     })}
                     {categories.map((category, index) => {
                         return <SidebarItem title={category.name} key={index}/>
