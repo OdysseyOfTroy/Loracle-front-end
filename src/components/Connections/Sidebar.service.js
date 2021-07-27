@@ -2,7 +2,7 @@ import http from "../../http-common";
 
 class SidebarService {
     index() {
-        return http.get("/users/1/containers/1/categories");
+        return http.get("/containers/1/categories");
     }
 
 }

@@ -2,7 +2,7 @@ import http from "../../http-common"
 
 class DashboardDataService {
     index() {
-        return http.get("/users/1/containers");
+        return http.get("/containers");
     }
 
     get(id) {
