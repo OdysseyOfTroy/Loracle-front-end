@@ -1,24 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 import "../css/Signup.css";
+import AuthenticationService from "./Connections/Authentication.service";
+import { useHistory } from "react-router-dom";
 
 export default function SignUp() {
   const [display_name, setDisplay_Name] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [conPassword, setConPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [dob, setDob] = useState("");
+
+  const [err, setErr] = useState("");
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
+  const history = useHistory();
+
+  const onSubmit = useCallback(
+    (e) => {
+    e.preventDefault();
+
+    AuthenticationService.register(
+      display_name,
+      email,
+      password,
+      passwordConfirmation,
+      dob
+    )
+    .then(() => {
+      history.push("/");
+    })
+  })
 
   return (
     <div className="page">
@@ -30,7 +48,7 @@ export default function SignUp() {
     </div>
     <div className="Signup">
 
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={onSubmit}>
 
 
         <Form.Group size="lg" controlId="display_name">
@@ -76,8 +94,8 @@ export default function SignUp() {
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             type="password"
-            value={conPassword}
-            onChange={(e) => setConPassword(e.target.value)}
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
           />
         </Form.Group>
 

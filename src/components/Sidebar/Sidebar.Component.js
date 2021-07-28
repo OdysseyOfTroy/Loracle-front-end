@@ -1,10 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import SidebarItem from "./SidebarItem.Component";
 import SidebarService from "../Connections/Sidebar.service";
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
+import "../../css/Sidebar.css"
 
 function Sidebar(props) {
 
@@ -62,13 +59,15 @@ function Sidebar(props) {
     return (
         <nav>
             <button
+                className="sidebar-toggle"
                 onClick={toggleSidebar}
                 style={{ display: showSidebar ? "none" : "flex" }}
             >
                 Toggle Sidebar</button>
 
-            <div style={{ display: showSidebar ? "flex" : "none" }} >
-                <button onClick={toggleSidebar}>Toggle Sidebar</button>
+            <div className="sidebar-Nav" style={{ display: showSidebar ? "flex" : "none" }} >
+                <div className="sidebar-wrap">
+                <button className="sidebar-toggle" onClick={toggleSidebar}>Toggle Sidebar</button>
                 {staticLinks.map((props, index) => {
                     return <SidebarItem title={props.title} key={index} path={props.path} />
                 })}
@@ -76,6 +75,7 @@ function Sidebar(props) {
                 {categories.map((category, index) => {
                     return <SidebarItem title={category.name} key={index} />
                 })}
+                </div>
             </div>
         </nav>
     )
