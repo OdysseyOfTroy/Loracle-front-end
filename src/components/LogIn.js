@@ -19,8 +19,7 @@ export default function Login() {
       .then(() => {
         window.location.replace("/Sidebar");
       })
-  },
-  [email, password]
+  }
   );
 
   return (
