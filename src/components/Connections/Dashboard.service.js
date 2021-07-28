@@ -5,10 +5,6 @@ class DashboardDataService {
         return http.get("/containers");
     }
 
-    get(id) {
-        return http.get("/containers/${id}");
-    }
-
     create(value) {
         let params = {};
         params["container"] = {};

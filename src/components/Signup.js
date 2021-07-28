@@ -14,8 +14,6 @@ export default function SignUp() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [dob, setDob] = useState("");
 
-  const [err, setErr] = useState("");
-
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }

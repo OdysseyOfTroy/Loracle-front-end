@@ -25,7 +25,6 @@ function Sidebar(props) {
 
     //define getters and setters for categories 
     const [categories, setCategories] = useState([]);
-    const [currentId, setCurrentId] = useState([null]);
 
     //Callback to update the shown categories
     const getCategories = useCallback(() => {
@@ -63,7 +62,7 @@ function Sidebar(props) {
                 onClick={toggleSidebar}
                 style={{ display: showSidebar ? "none" : "flex" }}
             >
-                Toggle Sidebar</button>
+                x</button>
 
             <div className="sidebar-Nav" style={{ display: showSidebar ? "flex" : "none" }} >
                 <div className="sidebar-wrap">
