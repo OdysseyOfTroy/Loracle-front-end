@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "../css/Login.css";
 import AuthenticationService from "./Connections/Authentication.service";
+import {Link} from "react-router-dom";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -53,6 +54,9 @@ export default function Login() {
           Login
         </Button>
 
+        <Button block size="lg" to="/signup" as={Link}>
+          Sign Up
+        </Button>
       </Form>
     </div>
     </div>

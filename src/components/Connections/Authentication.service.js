@@ -1,6 +1,6 @@
 import http from "../../http-common";
 
-class AuthenticationDataService {
+class AuthenticationService {
   login(email, password) {
     let params = {};
     params["user"] = {};
@@ -35,4 +35,4 @@ class AuthenticationDataService {
   }
 }
 
-export default new AuthenticationDataService();
+export default new AuthenticationService();
