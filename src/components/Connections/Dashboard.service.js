@@ -9,9 +9,10 @@ class DashboardService {
         let params = {};
         params["container"] = {};
         params["container"]["title"] = value;
+        params["container"]["description"] = value;
 
         return http.post("/containers", params);
     }
 }
 
-export default new DashboardService();
+export default new DashboardService;
