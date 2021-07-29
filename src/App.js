@@ -4,7 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import Login from './components/LogIn';
 import SignUp from './components/Signup';
-import Sidebar from './components/Mainpage/Sidebar/Sidebar.Component';
+import Sidebar from './components/MainPage/Sidebar/Sidebar.Component'
 import Dashboard from './components/Dashboard/Dashboard.Component';
 
 function App() {
