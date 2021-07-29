@@ -1,8 +1,8 @@
 import React, { useCallback, useEffect, useState } from "react";
 import SidebarItem from "./SidebarItem.Component";
-import SidebarService from "../Connections/Sidebar.service";
-import "../../css/Sidebar.css"
-import "../../css/global.css"
+import SidebarService from "../../Connections/Sidebar.service";
+import "../../../css/Sidebar.css"
+import "../../../css/global.css"
 
 function Sidebar(props) {
 
