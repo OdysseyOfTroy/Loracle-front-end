@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import "react-datepicker/dist/react-datepicker.css"
 import "../css/Signup.css";
 import AuthenticationService from "./Connections/Authentication.service";
+import { Link } from "react-router-dom";
 
 export default function SignUp() {
   const [displayName, setDisplayName] = useState("");
@@ -82,7 +83,11 @@ export default function SignUp() {
         </Form.Group>
 
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Sign Up
+          Create Account
+        </Button>
+
+        <Button block size="lg" to="/" as={Link}>
+          Return to Login
         </Button>
         
       </Form>
