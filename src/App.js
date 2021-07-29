@@ -4,8 +4,7 @@ import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 import Login from './components/LogIn';
 import SignUp from './components/Signup';
-import Sidebar from './components/Sidebar/Sidebar.Component';
-import Navbar from './components/Sidebar/Sidebar.Component';
+import Sidebar from './components/Mainpage/Sidebar/Sidebar.Component';
 import Dashboard from './components/Dashboard/Dashboard.Component';
 
 function App() {
@@ -15,7 +14,6 @@ function App() {
       <Route exact path="/signup"><SignUp /></Route>
       <Route exact path="/home" ><Dashboard /></Route>
       <Route exact path="/sidebar"><Sidebar /></Route>
-      <Route exact path="/sidebarItem"><Navbar /></Route>
     </Router>
   );
 }
