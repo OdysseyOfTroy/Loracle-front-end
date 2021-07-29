@@ -9,7 +9,7 @@ function ContainerList(props) {
                 {props.items && props.items.map((item) => (
                     <Card.item
                     key={item.id}
-                    >    
+                    >    items
                     </Card.item>
 
 
