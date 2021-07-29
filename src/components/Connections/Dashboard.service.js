@@ -14,4 +14,4 @@ class DashboardService {
     }
 }
 
-export default new DashboardService;
+export default new DashboardService();

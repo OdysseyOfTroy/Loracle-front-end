@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@1,500&display=swap');
+
+* {
+    font-family: 'Vollkorn', serif;
+}
+
+.global-background {
+    position: absolute;
+    background: #0f1014;
+    width: 100%;
+    height: 100%;
+
+}

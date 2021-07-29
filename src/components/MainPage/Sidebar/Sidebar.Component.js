@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import SidebarItem from "./SidebarItem.Component";
 import SidebarService from "../Connections/Sidebar.service";
 import "../../css/Sidebar.css"
+import "../../css/global.css"
 
 function Sidebar(props) {
 
@@ -56,6 +57,7 @@ function Sidebar(props) {
     const toggleSidebar = () => setShowSidebar(!showSidebar)
 
     return (
+        <div className="global-background">
         <nav>
             <button
                 className="sidebar-toggle"
@@ -77,6 +79,7 @@ function Sidebar(props) {
                 </div>
             </div>
         </nav>
+        </div>
     )
 }
 

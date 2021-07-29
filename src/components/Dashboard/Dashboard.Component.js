@@ -1,6 +1,8 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import DashboardService from '../Connections/Dashboard.service';
 import ContainerList from './Container.List';
+import "../../css/global.css";
+import "../../css/Dashboard.css";
 
 function Dashboard(props) {
 
@@ -36,14 +38,16 @@ function Dashboard(props) {
   }, [getContainers]);
 
     return (
-        <div className="Dashboard">
-            <div className="Dashboard-Row">
-                <h2>Containers</h2>
+        <div className="global-background">
+          <div className="Dashboard">
+              <div className="Dashboard-Row">
+                  <h2>Containers</h2>
+              </div>
+            <div className="Cards">
+              {containers.map((container, index) => {
+                  return <ContainerList title={container.title} key={index} description={container.description} />
+              })}
             </div>
-          <div className="Cards">
-            {containers.map((container, index) => {
-                return <ContainerList title={container.title} key={index} description={container.description} />
-            })}
           </div>
         </div>
     )
