@@ -12,10 +12,10 @@ function App() {
   return (
     <Router>
       <Route exact path="/"><Login /></Route> 
-      <Route exact path="/Signup"><SignUp /></Route>
-      <Route exact path="/Home" ><Dashboard /></Route>
-      <Route exact path="/Sidebar"><Sidebar /></Route>
-      <Route exact path="/SidebarItem"><Navbar /></Route>
+      <Route exact path="/signup"><SignUp /></Route>
+      <Route exact path="/home" ><Dashboard /></Route>
+      <Route exact path="/sidebar"><Sidebar /></Route>
+      <Route exact path="/sidebarItem"><Navbar /></Route>
     </Router>
   );
 }

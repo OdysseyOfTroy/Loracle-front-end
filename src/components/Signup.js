@@ -1,38 +1,32 @@
 import React, { useState, useCallback } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 import "../css/Signup.css";
 import AuthenticationService from "./Connections/Authentication.service";
-import { useHistory } from "react-router-dom";
 
 export default function SignUp() {
-  const [display_name, setDisplay_Name] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
-  const [dob, setDob] = useState("");
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
-
-  const history = useHistory();
 
   const onSubmit = useCallback(
     (e) => {
     e.preventDefault();
 
     AuthenticationService.register(
-      display_name,
+      displayName,
       email,
       password,
-      passwordConfirmation,
-      dob
+      passwordConfirmation
     )
     .then(() => {
-      history.push("/");
+      window.location.replace("/");
     })
   })
 
@@ -53,9 +47,9 @@ export default function SignUp() {
             <Form.Label>Display Name</Form.Label>
             <Form.Control
                 autoFocus
-                type="Display Name"
-                value={display_name}
-                onChange={(e) => setDisplay_Name(e.target.value)}
+                type="Display_name"
+                value={displayName}
+                onChange={(e) => setDisplayName(e.target.value)}
             />
         </Form.Group>
 
@@ -67,16 +61,6 @@ export default function SignUp() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-        </Form.Group>
-
-        <Form.Group size="lg" controlId="dob">
-        <Form.Label>Date of Birth</Form.Label>
-        <div className="dob">
-            <DatePicker
-            selected={dob}
-            onChange={date => setDob(date)}
-            />
-        </div>
         </Form.Group>
 
         <Form.Group size="lg" controlId="password">
