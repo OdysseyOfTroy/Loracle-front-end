@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import DashboardDataService from '../Connections/Dashboard.service';
+import DashboardService from '../Connections/Dashboard.service';
 import ContainerList from './Container.List';
 
 function Dashboard(props) {
@@ -11,7 +11,7 @@ function Dashboard(props) {
     // Callback to update the shown containers
   const getContainers = useCallback(
     (id) => {
-      DashboardDataService.index()
+      DashboardService.index()
         .then((response) => {
         if(response!== undefined) {
         setContainers(response.data);
@@ -22,7 +22,14 @@ function Dashboard(props) {
     },
     [setContainers, setCurrentId]
   );
-
+  
+  containers.forEach((container) => {
+    <ContainerList
+        id={container.id}
+        title={container.title}
+        description={container.description}
+    />
+  })
     //retrieve data on load
   useEffect(() => {
     getContainers();
@@ -33,9 +40,11 @@ function Dashboard(props) {
             <div className="Dashboard-Row">
                 <h2>Containers</h2>
             </div>
-
-            <ContainerList
-            currentId={currentId} />
+          <div className="Cards">
+            {containers.map((container, index) => {
+                return <ContainerList title={container.title} key={index} description={container.description} />
+            })}
+          </div>
         </div>
     )
 }

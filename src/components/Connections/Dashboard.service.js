@@ -1,6 +1,6 @@
 import http from "../../http-common"
 
-class DashboardDataService {
+class DashboardService {
     index() {
         return http.get("/containers");
     }
@@ -14,4 +14,4 @@ class DashboardDataService {
     }
 }
 
-export default new DashboardDataService;
+export default new DashboardService;
