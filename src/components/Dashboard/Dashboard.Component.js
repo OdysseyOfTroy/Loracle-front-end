@@ -3,6 +3,7 @@ import DashboardService from '../Connections/Dashboard.service';
 import ContainerList from './Container.List';
 import "../../css/global.css";
 import "../../css/Dashboard.css";
+import Universalbar from '../UniversalBar';
 
 function Dashboard(props) {
 
@@ -38,7 +39,9 @@ function Dashboard(props) {
   }, [getContainers]);
 
     return (
-        <div className="global-background">
+      <div className="global-background">
+      <Universalbar> </Universalbar>
+
           <div className="Dashboard">
               <div className="Dashboard-Row">
                   <h2>Containers</h2>
