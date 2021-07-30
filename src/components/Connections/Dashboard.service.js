@@ -13,6 +13,10 @@ class DashboardService {
 
         return http.post("/containers", params);
     }
+
+    delete(id) {
+        return http.delete(`/container/${id}`);
+    }
 }
 
 export default new DashboardService;

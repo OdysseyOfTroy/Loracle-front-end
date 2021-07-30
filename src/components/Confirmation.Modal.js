@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
-import PropTypes from "prop-types";
+import propTypes from "prop-types";
 
 function ConfirmationModal(props) {
     return (
@@ -24,17 +24,17 @@ function ConfirmationModal(props) {
     );
 }
 
-ConfirmationModal.PropTypes = {
+ConfirmationModal.propTypes = {
     //if modal is shown
-    visible: PropTypes.bool.isRequired,
+    visible: propTypes.bool.isRequired,
 
     //possible actions
-    closeAction: PropTypes.func.isRequired,
-    continueAction: PropTypes.func.isRequired,
+    closeAction: propTypes.func.isRequired,
+    continueAction: propTypes.func.isRequired,
 
     //required text
-    title: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
+    title: propTypes.string.isRequired,
+    text: propTypes.string.isRequired,
 };
 
 export default ConfirmationModal;
