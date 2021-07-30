@@ -19,8 +19,6 @@ function Dashboard(props) {
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  //set parameters function
-
   // Callback to update the shown containers
   const getContainers = useCallback(
     (id) => {
@@ -34,15 +32,6 @@ function Dashboard(props) {
     },  [setContainers, setCurrentId]
   );
   
-  //create containerlist for each container
-  containers.forEach((container) => {
-    <ContainerList
-        id={container.id}
-        title={container.title}
-        description={container.description}
-    />
-  })
-  
   //retrieve data on load
   useEffect(() => {
     getContainers();
@@ -50,62 +39,86 @@ function Dashboard(props) {
 
   //create new container
   const createContainer = useCallback(() => {
+    console.log(title, description  )
     DashboardService.create(title, description).then(() => {
       setIsModalVisible(false);
       getContainers();
     });
   });
 
+  const selectContainer = useCallback(
+    (id) => {
+      if (currentId == id) {
+        setCurrentId(null);
+      } else {
+        setCurrentId(id)
+      }
+    }
+  )
+
   //delete selected container
   const deleteContainer = useCallback(() => {
+    console.log(props.id)
     DashboardService.delete(props.id).then(() => {
       setIsConfirmModalVisible(false);
       getContainers();
     }); 
-  }, [props.id, getContainers, setIsModalVisible]);
+  });
 
-    return (
-      <div className="global-background">
-        <Universalbar />
-          <div className="Dashboard">
-              <div className="Dashboard-Row">
-                <h2>Containers</h2>
-              </div>
-              <div className="Cards">
-                {containers.map((container, index) => {
-                return (
-                  <div>
-                    <ContainerList id={container.id} title={container.title} key={index} description={container.description} />
-
-                  </div>
-                )
-                })}
-                <Button variant="primary" onClick={() => {setIsModalVisible(true);}}>New container</Button>
-              </div>
-          </div>
-
-          <ConfirmationModal
-            visible={isConfirmModalVisible}
-            title={`Delete ${title}?`}
-            text={`This action will delete ${title} and all associated notes. Do you wish to continue?`}
-            continueAction={deleteContainer}
-            closeAction={() => setIsConfirmModalVisible(false)}
-          />
-
-          <NewContainerModal 
-            visible={isModalVisible}
-            title={`New Container`}
-            continueAction={createContainer}
-            closeAction={() => setIsModalVisible(false)}
-            setTitle={setTitle}
-            setDescription={setDescription}
-          />
+  return (
+    <div className="global-background">
+      <Universalbar />
+      <div className="Dashboard">
+        <div className="Dashboard-Row">
+          <h2>Containers</h2>
         </div>
-    )
+        <div className="Cards">
+          {containers.map((container, index) => {
+            return (
+              <div>
+                <ContainerList selectContainer={selectContainer} 
+                id={container.id} 
+                title={container.title} 
+                key={index} 
+                description={container.description} 
+                setIsConfirmModalVisible={setIsConfirmModalVisible}/>
+              </div>
+            )
+          })}
+          <Button variant="primary" onClick={() => {setIsModalVisible(true);}}>New container</Button>
+        </div>
+      </div>
+
+      <ConfirmationModal
+        visible={isConfirmModalVisible}
+        title={`Delete ${title}?`}
+        text={`This action will delete ${title} and all associated notes. Do you wish to continue?`}
+        continueAction={deleteContainer}
+        closeAction={() => setIsConfirmModalVisible(false)}
+      />
+
+      <NewContainerModal 
+        visible={isModalVisible}
+        title={`New Container`}
+        continueAction={createContainer}
+        closeAction={() => setIsModalVisible(false)}
+        setTitle={setTitle}
+        setDescription={setDescription}
+      />
+    </div>
+  )
 }
 
 export default Dashboard;
 
 
+//code that may need to be used again
 
-//                     <button className="delete-btn" onClick={() => {setIsConfirmModalVisible(true);}}>Delete</button>
+  //create containerlist for each container
+  // containers.forEach((container) => {
+  //   <ContainerList
+  //       id={container.id}
+  //       title={container.title}
+  //       description={container.description}
+  //   />
+  // })

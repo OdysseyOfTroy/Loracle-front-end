@@ -11,6 +11,7 @@
     padding: 0;
     width: 30%;
     background: #0f1014;
+    text-align: center;
 
 }
 
@@ -30,6 +31,7 @@
 
 .custom-card{
     display: flex;
+    flex-direction: column;
     padding: 1rem;
     border: none;
     background-color: none;
@@ -58,4 +60,28 @@
 
 .delete-btn {
     width: 100%;
+}
+
+.button-Actions {
+    flex-grow: 1;
+    width: 100%;
+}
+
+.button-function {
+    width: 50%;
+    background-color: #1b1d22;
+    border-top: none;
+    border-bottom: none;
+    border-color: violet;
+}
+
+.delete {
+    color: red;
+    border-left: none;
+    border-right: none;
+}
+
+.view {
+    color: blue;
+    border-right: none;
 }

@@ -25,42 +25,40 @@ export default function Login() {
 
   return (
     <div className="page">
-    <div className="Background">
+      <div className="Background">
     </div>
-      <div className="Login-Container">
-    <div >
+    <div className="Login-Container">
+      <div >
         <h1 className="Title">Loracle</h1>
+      </div>
+      <div className="Login">
+        <Form onSubmit={onSubmit}>
+          <Form.Group size="lg" controlId="email">
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              autoFocus
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group size="lg" controlId="password">
+            <Form.Label>Password</Form.Label>
+            <Form.Control
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </Form.Group>
+          <Button block size="lg" type="submit" disabled={!validateForm()} >
+            Login
+          </Button>
+          <Button block size="lg" to="/signup" as={Link}>
+            Sign Up
+          </Button>
+        </Form>
+      </div>
     </div>
-    <div className="Login">
-      <Form onSubmit={onSubmit}>
-        <Form.Group size="lg" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()} >
-          Login
-        </Button>
-
-        <Button block size="lg" to="/signup" as={Link}>
-          Sign Up
-        </Button>
-      </Form>
-    </div>
-    </div>
-
-    </div>
+  </div>
   );
 }
