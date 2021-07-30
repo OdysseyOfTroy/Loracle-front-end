@@ -1,7 +1,9 @@
 import React from 'react';
 import "../../css/Dashboard.css";
 
-function ContainerList(props) {
+function ContainerList(props, setIsConfirmModalVisible={setIsConfirmModalVisible}) {
+
+  
     
     return (
         <div className="card">
@@ -12,7 +14,7 @@ function ContainerList(props) {
             <p className="card-text">{props.description}</p>
           </div>
         <div className="button-Actions">
-          <button className="button-function delete">Delete</button>
+          <button className="button-function delete" onClick={() => {props.setIsConfirmModalVisible(true)}}>Delete</button>
           <button className="button-function view">View</button>
         </div>
       </div>

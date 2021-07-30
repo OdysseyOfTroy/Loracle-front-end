@@ -19,8 +19,6 @@ function Dashboard(props) {
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  //set parameters function
-
   // Callback to update the shown containers
   const getContainers = useCallback(
     (id) => {
@@ -63,7 +61,7 @@ function Dashboard(props) {
       setIsConfirmModalVisible(false);
       getContainers();
     }); 
-  }, [props.id, getContainers, setIsModalVisible]);
+  });
 
     return (
       <div className="global-background">
@@ -76,7 +74,7 @@ function Dashboard(props) {
                 {containers.map((container, index) => {
                 return (
                   <div>
-                    <ContainerList id={container.id} title={container.title} key={index} description={container.description} />
+                    <ContainerList id={container.id} title={container.title} key={index} description={container.description} setIsConfirmModalVisible={setIsConfirmModalVisible}/>
 
                   </div>
                 )
