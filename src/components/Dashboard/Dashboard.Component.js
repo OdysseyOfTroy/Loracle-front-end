@@ -10,7 +10,7 @@ import NewContainerModal from '../NewItemModal';
 
 function Dashboard(props) {
 
-  //Define getting and setting the state of component
+  //Define getting and setting the states of this component
   const [containers, setContainers] = useState([]);
   const [currentId, setCurrentId] = useState([null]); 
   const [title, setTitle] = useState("");
@@ -20,6 +20,7 @@ function Dashboard(props) {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   //set parameters function
+
   // Callback to update the shown containers
   const getContainers = useCallback(
     (id) => {
@@ -70,12 +71,12 @@ function Dashboard(props) {
               <div className="Dashboard-Row">
                 <h2>Containers</h2>
               </div>
-              <div className="Cards">index
+              <div className="Cards">
                 {containers.map((container, index) => {
                 return (
                   <div>
                     <ContainerList id={container.id} title={container.title} key={index} description={container.description} />
-                    <button className="delete-btn" onClick={() => {setIsConfirmModalVisible(true);}}>Delete</button>
+
                   </div>
                 )
                 })}
@@ -104,3 +105,7 @@ function Dashboard(props) {
 }
 
 export default Dashboard;
+
+
+
+//                     <button className="delete-btn" onClick={() => {setIsConfirmModalVisible(true);}}>Delete</button>
