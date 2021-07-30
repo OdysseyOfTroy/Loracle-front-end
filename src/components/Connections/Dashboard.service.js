@@ -5,12 +5,11 @@ class DashboardService {
         return http.get("/containers");
     }
 
-    create(value) {
+    create(title, description) {
         let params = {};
         params["container"] = {};
-        params["container"]["title"] = value;
-        params["container"]["description"] = value;
-
+        params["container"]["title"] = title;
+        params["container"]["description"] = description;
         return http.post("/containers", params);
     }
 

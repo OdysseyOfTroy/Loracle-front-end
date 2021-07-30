@@ -50,6 +50,7 @@ function Dashboard(props) {
 
   //create new container
   const createContainer = useCallback(() => {
+    console.log(title, description  )
     DashboardService.create(title, description).then(() => {
       setIsModalVisible(false);
       getContainers();
