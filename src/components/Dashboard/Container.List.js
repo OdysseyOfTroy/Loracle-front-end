@@ -4,7 +4,7 @@ import "../../css/Dashboard.css";
 function ContainerList(props) {
     
     return (
-        <button className="card" onClick={() => setIsModalVisible(true)}>
+        <button className="card">
         <div className="custom-card">
         
           <div className="card-body">

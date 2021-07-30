@@ -13,13 +13,13 @@ function NewContainerModal(props, setTitle={setTitle}, setDescription={setDescri
 
             <Modal.Body>  
             <form>
-                <div class="form-group">
-                    <label for="Title-label" class="col-form-label">Title:</label>
-                    <input type="text" class="form-control" id="title-name" onChange={(e) => props.setTitle(e.target.value)}/>
+                <div className="form-group">
+                    <label for="Title-label" className="col-form-label">Title:</label>
+                    <input type="text" className="form-control" id="title-name" onChange={(e) => props.setTitle(e.target.value)}/>
                 </div>
-                <div class="form-group">
-                    <label for="Description-text" class="col-form-label">Description:</label>
-                    <textarea class="form-control" id="description-text" onChange={(e) => props.setDescription(e.target.value)}></textarea>
+                <div className="form-group">
+                    <label for="Description-text" classNAme="col-form-label">Description:</label>
+                    <textarea className="form-control" id="description-text" onChange={(e) => props.setDescription(e.target.value)}></textarea>
                 </div>
             </form>
             </Modal.Body>

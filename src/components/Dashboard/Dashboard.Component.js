@@ -6,7 +6,7 @@ import "../../css/Dashboard.css";
 import Universalbar from '../UniversalBar';
 import ConfirmationModal from '../Confirmation.Modal';
 import { Button } from 'react-bootstrap';
-import NewContainerModal from '../NewItemModal';
+import NewContainerModal from '../Dashboard/NewContainerModal';
 
 function Dashboard(props) {
 
