@@ -33,66 +33,64 @@ export default function SignUp() {
 
   return (
     <div className="page">
-    <div className="Background">
-    </div>
-    <div className="signup-Container">
-    <div >
-        <h1 className="Title">Loracle</h1>
-    </div>
-    <div className="Signup">
+      <div className="Background">
+      </div>
+      <div className="signup-Container">
+        <div >
+          <h1 className="Title">Loracle</h1>
+        </div>
+        <div className="Signup">
 
-      <Form onSubmit={onSubmit}>
+          <Form onSubmit={onSubmit}>
 
-
-        <Form.Group size="lg" controlId="display_name">
-            <Form.Label>Display Name</Form.Label>
-            <Form.Control
+            <Form.Group size="lg" controlId="display_name">
+              <Form.Label>Display Name</Form.Label>
+              <Form.Control
                 autoFocus
                 type="Display_name"
                 value={displayName}
                 onChange={(e) => setDisplayName(e.target.value)}
-            />
-        </Form.Group>
+              />
+            </Form.Group>
 
-        <Form.Group size="lg" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </Form.Group>
+            <Form.Group size="lg" controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                autoFocus
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
 
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </Form.Group>
+            <Form.Group size="lg" controlId="password">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
 
-        <Form.Group size="lg" controlId="passwordconfirmation">
-          <Form.Label>Confirm Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={passwordConfirmation}
-            onChange={(e) => setPasswordConfirmation(e.target.value)}
-          />
-        </Form.Group>
+            <Form.Group size="lg" controlId="passwordconfirmation">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                type="password"
+                value={passwordConfirmation}
+                onChange={(e) => setPasswordConfirmation(e.target.value)}
+              />
+            </Form.Group>
 
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Create Account
-        </Button>
+            <Button block size="lg" type="submit" disabled={!validateForm()}>
+              Create Account
+            </Button>
 
-        <Button block size="lg" to="/" as={Link}>
-          Return to Login
-        </Button>
-        
-      </Form>
-    </div>
-    </div>
+            <Button block size="lg" to="/" as={Link}>
+              Return to Login
+            </Button>
+          </Form>
+        </div>
+      </div>
     </div>
   );
 }

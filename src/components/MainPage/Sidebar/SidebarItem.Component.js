@@ -4,14 +4,14 @@ import "../../../css/Sidebar.css"
  
 function SidebarItem(props) {
 
-    return (
-        <Link to={props.path} className="sidebar-Link">
-            <span>
-                {props.id}
-                {props.title}
-            </span>
-        </Link>
-    )
+  return (
+    <Link to={props.path} className="sidebar-Link">
+      <span>
+        {props.id}
+        {props.title}
+      </span>
+    </Link>
+  )
 }
 
 export default SidebarItem;
