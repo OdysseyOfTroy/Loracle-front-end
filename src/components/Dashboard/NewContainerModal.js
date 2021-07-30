@@ -18,7 +18,7 @@ function NewContainerModal(props, setTitle={setTitle}, setDescription={setDescri
                     <input type="text" className="form-control" id="title-name" onChange={(e) => props.setTitle(e.target.value)}/>
                 </div>
                 <div className="form-group">
-                    <label for="Description-text" classNAme="col-form-label">Description:</label>
+                    <label for="Description-text" className="col-form-label">Description:</label>
                     <textarea className="form-control" id="description-text" onChange={(e) => props.setDescription(e.target.value)}></textarea>
                 </div>
             </form>
