@@ -31,6 +31,8 @@
 .custom-card{
     display: flex;
     padding: 1rem;
+    border: none;
+    background-color: none;
 }
 
 .card-body {
@@ -44,6 +46,9 @@
 
 .custom-card:hover {
     text-decoration: none;
+    background-color: none;
+    border: none;
+
 }
 
 .card-body {
