@@ -1,16 +1,16 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import "../../../css/Sidebar.css"
  
 function SidebarItem(props) {
 
   return (
-    <Link to={props.path} className="sidebar-Link">
+    <div className="sidebar-Link">
       <span>
         {props.id}
         {props.title}
       </span>
-    </Link>
+    </div>
   )
 }
 

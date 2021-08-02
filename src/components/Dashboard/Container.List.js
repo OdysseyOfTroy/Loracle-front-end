@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "../../css/Dashboard.css";
 
 function ContainerList(props, setIsConfirmModalVisible={setIsConfirmModalVisible}, selectContainer={selectContainer}) {
   
+
   return (
     <div className="card">
       <div className="custom-card">
@@ -16,7 +18,8 @@ function ContainerList(props, setIsConfirmModalVisible={setIsConfirmModalVisible
               props.setIsConfirmModalVisible(true), 
               props.selectContainer(props.id)}}> Delete
           </button>
-          <button className="button-function view">View</button>
+          <button className="button-function view"
+            to="/sidebar" as={Link}>View</button>
         </div>
       </div>
     </div>
