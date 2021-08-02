@@ -1,0 +1,16 @@
+.page {
+  height: 100vh;
+  background-color: #0f1014;
+}
+
+.sidebar {
+  display: flex;
+}
+
+.identifiers {
+  display: flex;
+  margin-left: 30%;
+  margin-right: 10%;
+  background-color: #353535;
+  
+}

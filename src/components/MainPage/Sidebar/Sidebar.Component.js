@@ -3,7 +3,7 @@ import SidebarItem from "./SidebarItem.Component";
 import NavSidebarItem from "./NavSidebarItem.Component";
 import CategoryService from "../../Connections/Category.service";
 import "../../../css/Sidebar.css"
-import "../../../css/global.css"
+
 import Universalbar from "../../UniversalBar";
 import {Button} from "react-bootstrap"
 import NewCategoryModal from "./NewCategoryModal";
@@ -68,8 +68,6 @@ function Sidebar(props) {
   const toggleSidebar = () => setShowSidebar(!showSidebar)
 
   return (
-    <div className="global-background">
-      <Universalbar></Universalbar>
       <nav>
         <button
         className="sidebar-toggle"
@@ -94,8 +92,7 @@ function Sidebar(props) {
             New Category</Button>
           </div>
         </div>
-      </nav>
-            <NewCategoryModal
+        <NewCategoryModal
             visible={isModalVisible}
             title={`New Category`}
             continueAction={createCategory}
@@ -103,7 +100,9 @@ function Sidebar(props) {
             setName={setName}
             setDescription={setDescription}
             />
-    </div>
+      </nav>
+
+
   )
 }
 

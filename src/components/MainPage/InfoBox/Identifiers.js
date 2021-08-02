@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import IdentifierService from "../../Connections/Identifier.service";
 import IdentifierList from "./IdentiderList";
+import "../../../css/Identifiers.css"
 
 function Identifiers(props) {
   
@@ -26,7 +27,7 @@ function Identifiers(props) {
   }, [getIdentifiers]);
 
   return (
-    <div className="list row">
+    <div className="list-row">
       <div className="col=md-6">
         <h2>Identifiers</h2>
 
