@@ -12,7 +12,7 @@ function Dashboard(props) {
 
   //Define getting and setting the states of this component
   const [containers, setContainers] = useState([]);
-  const [currentId, setCurrentId] = useState([null]); 
+  const [containerId, setContainerId] = useState([null]); 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -26,10 +26,10 @@ function Dashboard(props) {
         .then((response) => {
         if(response!== undefined) {
           setContainers(response.data);
-          setCurrentId(id || null);
+          setContainerId(id || null);
         }
       });
-    },  [setContainers, setCurrentId]
+    },  [setContainers, setContainerId]
   );
   
   //retrieve data on load
@@ -48,18 +48,18 @@ function Dashboard(props) {
 
   const selectContainer = useCallback(
     (id) => {
-      if (currentId == id) {
-        setCurrentId(null);
+      if (containerId == id) {
+        setContainerId(null);
       } else {
-        setCurrentId(id)
+        setContainerId(id)
       }
-    }, [setCurrentId]
+    }, [setContainerId]
   )
 
   //delete selected container
   const deleteContainer = useCallback(() => {
-    console.log(currentId)
-    DashboardService.delete(currentId).then(() => {
+    console.log(containerId)
+    DashboardService.delete(containerId).then(() => {
       setIsConfirmModalVisible(false);
       getContainers();
     }); 

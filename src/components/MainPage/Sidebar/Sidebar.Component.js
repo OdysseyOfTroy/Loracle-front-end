@@ -4,7 +4,6 @@ import NavSidebarItem from "./NavSidebarItem.Component";
 import CategoryService from "../../Connections/Category.service";
 import "../../../css/Sidebar.css"
 
-import Universalbar from "../../UniversalBar";
 import {Button} from "react-bootstrap"
 import NewCategoryModal from "./NewCategoryModal";
 
@@ -56,7 +55,7 @@ function Sidebar(props) {
   })
 
   const createCategory = useCallback(() => {
-    CategoryService.create(name, description).then(() => {
+    CategoryService.create(props.containerId ,name, description).then(() => {
       setIsModalVisible(false);
       getCategories();
     })

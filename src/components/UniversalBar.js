@@ -2,6 +2,7 @@ import React from "react";
 import AuthenticationService from "./Connections/Authentication.service";
 import { Navbar } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import "../css/uniBar.css"
 
 function Universalbar() {
 
@@ -11,8 +12,8 @@ function Universalbar() {
   }
 
   return (
-    <Navbar className="bg-primary w-100 d-inline-flex justify-content-between p-0 mb-lg-2">
-      <Button onClick={logout}>
+    <Navbar className="bg-black w-100 d-inline-flex justify-content-end p-0 mb-lg-2">
+      <Button className="logout-btn"onClick={logout}>
         log out
       </Button>
     </Navbar>
