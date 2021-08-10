@@ -53,13 +53,13 @@ function Dashboard(props) {
       } else {
         setCurrentId(id)
       }
-    }
+    }, [setCurrentId]
   )
 
   //delete selected container
   const deleteContainer = useCallback(() => {
-    console.log(props.id)
-    DashboardService.delete(props.id).then(() => {
+    console.log(currentId)
+    DashboardService.delete(currentId).then(() => {
       setIsConfirmModalVisible(false);
       getContainers();
     }); 
@@ -91,8 +91,8 @@ function Dashboard(props) {
 
       <ConfirmationModal
         visible={isConfirmModalVisible}
-        title={`Delete ${title}?`}
-        text={`This action will delete ${title} and all associated notes. Do you wish to continue?`}
+        title={`Delete container?`}
+        text={`This action will delete this container and all associated notes. Do you wish to continue?`}
         continueAction={deleteContainer}
         closeAction={() => setIsConfirmModalVisible(false)}
       />

@@ -17,11 +17,11 @@ class DashboardService {
     let params = {};
     params["container"] = {};
     params["container"][param] = value;
-    return http.put(`/container/${id}`, params);
+    return http.put(`/containers/${id}`, params);
   }
 
   delete(id) {
-    return http.delete(`/container/${id}`);
+    return http.delete(`/containers/${id}`);
   }
 }
 

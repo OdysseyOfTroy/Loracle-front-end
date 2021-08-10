@@ -63,7 +63,7 @@ function Sidebar(props) {
   })
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const [showSidebar, setShowSidebar] = useState(false)
+  const [showSidebar, setShowSidebar] = useState(true)
 
   const toggleSidebar = () => setShowSidebar(!showSidebar)
 

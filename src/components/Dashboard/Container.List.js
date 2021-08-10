@@ -15,8 +15,8 @@ function ContainerList(props, setIsConfirmModalVisible={setIsConfirmModalVisible
         <div className="button-Actions">
           <button className="button-function delete" 
             onClick={() => {
-              props.setIsConfirmModalVisible(true), 
-              props.selectContainer(props.id)}}> Delete
+              props.selectContainer(props.id, props.title),
+              props.setIsConfirmModalVisible(true)}}> Delete
           </button>
           <button className="button-function view"
             to="/sidebar" as={Link}>View</button>
