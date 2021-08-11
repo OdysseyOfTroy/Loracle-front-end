@@ -39,7 +39,6 @@ function Dashboard(props) {
 
   //create new container
   const createContainer = useCallback(() => {
-    console.log(title, description  )
     DashboardService.create(title, description).then(() => {
       setIsModalVisible(false);
       getContainers();
@@ -58,7 +57,6 @@ function Dashboard(props) {
 
   //delete selected container
   const deleteContainer = useCallback(() => {
-    console.log(containerId)
     DashboardService.delete(containerId).then(() => {
       setIsConfirmModalVisible(false);
       getContainers();

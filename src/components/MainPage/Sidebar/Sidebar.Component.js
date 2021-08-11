@@ -84,7 +84,7 @@ function Sidebar(props) {
             })}
 
             {categories.map((category, index) => {
-            return <SidebarItem title={category.name} id={category.id} key={index} containerId={props.containerId}/>
+            return <SidebarItem title={category.name} id={category.id} key={index} containerId={props.containerId} setIdentifierView={props.setIdentifierView}/>
             })}
 
             <Button variant="primary" 
