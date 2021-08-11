@@ -48,7 +48,7 @@ function Dashboard(props) {
 
   const selectContainer = useCallback(
     (id) => {
-      if (containerId == id) {
+      if (containerId === id) {
         setContainerId(null);
       } else {
         setContainerId(id)

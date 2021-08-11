@@ -32,7 +32,8 @@ function Sidebar(props) {
 
   //Callback to update the shown categories
   const getCategories = useCallback(() => {
-    CategoryService.index().then((response) => {
+
+    CategoryService.index(props.containerId).then((response) => {
         setCategories(response.data);
     })
     .catch((err) => {
