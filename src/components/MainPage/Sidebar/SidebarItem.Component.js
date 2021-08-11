@@ -1,16 +1,23 @@
 import React from "react";
 
 import "../../../css/Sidebar.css"
+import IdentifierService from "../../Connections/Identifier.service";
  
 function SidebarItem(props) {
 
+  const onClick = () => {
+    IdentifierService.index(props.containerId, props.id).then((res
+    )=> {
+      console.log(res)
+    })
+  }
+
   return (
-    <div className="sidebar-Link">
+    <button className="sidebar-Link" onClick={onClick}>
       <span>
-        {props.id}
         {props.title}
       </span>
-    </div>
+    </button>
   )
 }
 
