@@ -10,7 +10,7 @@ function Identifiers(props) {
       <div className="col=md-6">
         {props.identifiers.map((identifier) => {
 
-          return (<h2> {identifier.title} </h2>);
+          return (<button> {identifier.title} </button>);
         })} 
       </div>
     </div>

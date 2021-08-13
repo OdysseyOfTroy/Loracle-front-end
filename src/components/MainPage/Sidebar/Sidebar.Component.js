@@ -63,22 +63,22 @@ function Sidebar(props) {
   })
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const [showSidebar, setShowSidebar] = useState(true)
+  // const [showSidebar, setShowSidebar] = useState(true)
 
-  const toggleSidebar = () => setShowSidebar(!showSidebar)
+  //const toggleSidebar = () => setShowSidebar(!showSidebar)
 
   return (
       <nav>
         <button
         className="sidebar-toggle"
-        onClick={toggleSidebar}
-        style={{ display: showSidebar ? "none" : "flex" }}
+        // onClick={toggleSidebar}
+        // style={{ display: showSidebar ? "none" : "flex" }}
         >
         x</button>
 
-        <div className="sidebar-Nav" style={{ display: showSidebar ? "flex" : "none" }} >
+        <div className="sidebar-Nav">
           <div className="sidebar-wrap">
-            <button className="sidebar-toggle" onClick={toggleSidebar}>Toggle Sidebar</button>
+            {/* <button className="sidebar-toggle" onClick={toggleSidebar}>Toggle Sidebar</button> */}
             {staticLinks.map((props, index) => {
             return <NavSidebarItem title={props.title} key={index} path={props.path} />
             })}
