@@ -33,12 +33,40 @@
     align-items: center;
 }
 
+.navSidebar-Link {
+  display: flex;
+  color: violet;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #15171c;
+  border: none;
+  padding: 5%;
+  height: 60px;
+  font-size: 150%;
+  text-decoration: none;
+}
+
+.navSidebar-Link:hover {
+  background-color: #252831;
+  border-left: 4px solid violet;
+  cursor: pointer;
+  color: violet;
+}
+
+.navSidebar-Link:link {
+  text-decoration: none;
+}
+
 .sidebar-Link {
     display: flex;
     color: violet;
     justify-content: space-between;
     align-items: center;
-    padding: 5%;
+    width: 100%;
+    background-color: #15171c;
+    border: none;
+    padding: 7%;
     height: 60px;
     font-size: 150%;
     text-decoration: none;

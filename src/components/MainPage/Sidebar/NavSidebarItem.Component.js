@@ -5,7 +5,7 @@ import "../../../css/Sidebar.css"
 function NavSidebarItem(props) {
 
   return (
-    <Link to={props.path} className="sidebar-Link">
+    <Link to={props.path} className="navSidebar-Link">
       <span>
         {props.id}
         {props.title}
