@@ -3,6 +3,7 @@ import SidebarItem from "./SidebarItem.Component";
 import NavSidebarItem from "./NavSidebarItem.Component";
 import CategoryService from "../../Connections/Category.service";
 import "../../../css/Sidebar.css";
+import ConfirmationModal from '../../Confirmation.Modal';
 
 import { Button } from "react-bootstrap";
 import NewCategoryModal from "./NewCategoryModal";
@@ -24,6 +25,8 @@ function Sidebar(props) {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+
+  const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
 
   //Callback to update the shown categories
   const getCategories = useCallback(() => {
@@ -51,11 +54,20 @@ function Sidebar(props) {
       getCategories();
     });
   });
+
+  //delete selected container
+  const deleteCategory = useCallback(() => {
+    CategoryService.delete(props.containerId, props.id).then(() => {
+      setIsConfirmModalVisible(false);
+      getCategories();
+    });
+  });
+
+
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   return (
     <nav>
-
       <div className="sidebar-Nav">
         <div className="sidebar-wrap">
           {staticLinks.map((props, index) => {
@@ -78,7 +90,7 @@ function Sidebar(props) {
                 key={index}
                 containerId={props.containerId}
                 setIdentifierView={props.setIdentifierView}
-                // setCategoryId={}
+                setIsConfirmModalVisible={setIsConfirmModalVisible}
               />
             );
           })}
@@ -100,6 +112,13 @@ function Sidebar(props) {
         closeAction={() => setIsModalVisible(false)}
         setName={setName}
         setDescription={setDescription}
+      />
+      <ConfirmationModal
+        visible={isConfirmModalVisible}
+        title={`Delete category?`}
+        text={`This action will delete this category and all associated notes. Do you wish to continue?`}
+        continueAction={deleteCategory}
+        closeAction={() => setIsConfirmModalVisible(false)}
       />
     </nav>
   );

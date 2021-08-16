@@ -97,3 +97,8 @@
 .sidebar-Link:link {
     text-decoration: none;
 }
+
+.delete:hover {
+  background-color: red;
+  color: white;
+}
