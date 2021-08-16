@@ -6,7 +6,7 @@ function SidebarItem(props) {
 
   const onClick = () => {
     IdentifierService.index(props.containerId, props.id).then((res)=> {
-      props.setIdentifierView(res.data)
+      props.setIdentifierView(res.data, props.id)
     })
   }
 

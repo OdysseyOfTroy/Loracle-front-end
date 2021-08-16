@@ -73,6 +73,20 @@
     
 }
 
+.sidebar-item {
+  display: flex;
+  color: violet;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #15171c;
+  padding: 7%;
+  height: 60px;
+  font-size: 160%;
+  font-style: italic;
+  
+}
+
 .sidebar-Link:hover {
     background-color: #252831;
     border-left: 4px solid violet;
