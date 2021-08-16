@@ -13,7 +13,7 @@ function App() {
       <Route exact path="/"><Login /></Route> 
       <Route exact path="/signup"><SignUp /></Route>
       <Route exact path="/home" ><Dashboard /></Route>
-      <Route exact path={`/home/:containerId/mainpage`}><Mainpage /></Route>
+      <Route exact path={`/mainpage/:containerId`}><Mainpage /></Route>
     </Router>
   );
 }

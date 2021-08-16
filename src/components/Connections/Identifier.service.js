@@ -1,8 +1,8 @@
 import http from "../../http-common"
 
 class IdentifierService {
-  index() {
-    return http.get(`/containers/2/categories/2/identifiers`);
+  index(containerId, categoryId) {
+    return http.get(`/containers/${containerId}/categories/${categoryId}/identifiers`);
   }
 }
 

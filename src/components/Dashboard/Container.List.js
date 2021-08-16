@@ -15,11 +15,15 @@ function ContainerList(props, setIsConfirmModalVisible={setIsConfirmModalVisible
         <div className="button-Actions">
           <button className="button-function delete" 
             onClick={() => {
-              props.selectContainer(props.id, props.title),
+              props.selectContainer(props.id),
               props.setIsConfirmModalVisible(true)}}> Delete
           </button>
           <button className="button-function view"
-            to="/sidebar" as={Link}>View</button>
+            onClick={() => {
+              props.selectContainer(props.id)
+              window.location=`/mainpage/${props.id}`
+            }}
+            >View</button>
         </div>
       </div>
     </div>

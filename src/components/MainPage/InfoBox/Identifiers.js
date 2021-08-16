@@ -1,41 +1,24 @@
 import React, { useCallback, useEffect, useState } from "react";
-import IdentifierService from "../../Connections/Identifier.service";
-import IdentifierList from "./IdentiderList";
+
 import "../../../css/Identifiers.css"
+import InformationService from "../../Connections/Information.service";
 
 function Identifiers(props) {
-  
-  //define  getters and setters for this component
-  const [identifiers, setIdentifiers] = useState([]);
-  const [currentId, setCurrentId] = useState(null);
 
-  //Callback to update shown Identifiers
-  const getIdentifiers = useCallback(() => {
-    IdentifierService.index().then((response) => {
-      setIdentifiers(response.data);
+  const onClick = (id) => {
+    InformationService.index(props.containerId, props.categoryId, id).then((res)=> {
+      props.setInformationView(res.data)
+      // console.log(res.data)
     })
-    .catch((err) => {
-      //Handle error
-    });
-  });
-
-  const showItem = (id) => {
-    setCurrentId(null);
   }
-  useEffect(() => {
-    getIdentifiers();
-  }, [getIdentifiers]);
 
   return (
     <div className="list-row">
       <div className="col=md-6">
-        <h2>Identifiers</h2>
+        {props.identifiers.map((identifier, idx) => {
 
-        <IdentifierList>
-          currentId={currentId}
-          setCurrentId={showItem}
-          items={identifiers}
-        </IdentifierList>
+          return (<button onClick={() => onClick(identifier.id)} key={idx}> {identifier.title}</button>);
+        })} 
       </div>
     </div>
   )

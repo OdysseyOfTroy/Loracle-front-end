@@ -1,17 +1,34 @@
 import React from "react";
+import "../../../css/Sidebar.css";
+import IdentifierService from "../../Connections/Identifier.service";
 
-import "../../../css/Sidebar.css"
- 
-function SidebarItem(props) {
+function SidebarItem(
+  props,
+  setIsConfirmModalVisible = { setIsConfirmModalVisible }
+) {
+  const onClick = () => {
+    IdentifierService.index(props.containerId, props.id).then((res) => {
+      props.setIdentifierView(res.data, props.id);
+    });
+  };
 
   return (
-    <div className="sidebar-Link">
-      <span>
-        {props.id}
-        {props.title}
-      </span>
+    <div>
+      <button className="sidebar-Link" onClick={onClick}>
+        <span>{props.title}</span>
+      </button>
+      <button
+        className="button-function delete"
+        onClick={() => {
+          props.setIsConfirmModalVisible(true);
+        }}
+      >
+        Delete
+      </button>
     </div>
-  )
+
+    
+  );
 }
 
 export default SidebarItem;
