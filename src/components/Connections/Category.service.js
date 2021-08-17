@@ -17,6 +17,15 @@ class CategoryService {
     return http.post(`/containers/${containerId}/categories`, params);
   }
 
+  update(containerId, id, title, description) {
+    let params = {};
+    params["category"] = {};
+    params["category"]["name"] = title;
+    params["category"]["description"] = description;
+    return http.put(`/containers/${containerId}/categories/${id}`, params);
+  }
+
+
   delete(containerId, id) {
     return http.delete(`/containers/${containerId}/categories/${id}`);
   }

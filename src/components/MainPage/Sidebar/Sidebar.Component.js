@@ -7,6 +7,7 @@ import ConfirmationModal from "../../Confirmation.Modal";
 
 import { Button } from "react-bootstrap";
 import NewCategoryModal from "./NewCategoryModal";
+import EditCategoryModal from "./EditCategoryModal";
 
 function Sidebar(props) {
   const staticLinks = [
@@ -28,6 +29,7 @@ function Sidebar(props) {
   const [currentId, setCurrentId] = useState(-1);
 
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   //Callback to update the shown categories
   const getCategories = useCallback(() => {
@@ -54,6 +56,16 @@ function Sidebar(props) {
       setIsModalVisible(false);
       getCategories();
     });
+  });
+
+  const editCategory = useCallback(() => {
+    CategoryService.update(
+      props.containerId,
+      currentId,
+      name,
+      description
+    );
+    setIsEditModalVisible(false);
   });
 
   //delete selected container
@@ -91,6 +103,7 @@ function Sidebar(props) {
                 containerId={props.containerId}
                 setIdentifierView={props.setIdentifierView}
                 setIsConfirmModalVisible={setIsConfirmModalVisible}
+                setIsEditModalVisible={setIsEditModalVisible}
                 setCurrentId={setCurrentId}
               />
             );
@@ -111,6 +124,15 @@ function Sidebar(props) {
         title={`New Category`}
         continueAction={createCategory}
         closeAction={() => setIsModalVisible(false)}
+        setName={setName}
+        setDescription={setDescription}
+      />
+
+      <EditCategoryModal
+        visible={isEditModalVisible}
+        title={`Edit`}
+        continueAction={editCategory}
+        closeAction={() => setIsEditModalVisible(false)}
         setName={setName}
         setDescription={setDescription}
       />

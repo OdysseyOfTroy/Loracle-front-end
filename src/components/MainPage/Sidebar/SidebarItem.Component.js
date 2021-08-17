@@ -5,7 +5,8 @@ import IdentifierService from "../../Connections/Identifier.service";
 function SidebarItem(
   props,
   setIsConfirmModalVisible = { setIsConfirmModalVisible },
-  setCurrentId = { setCurrentId }
+  setCurrentId = { setCurrentId },
+  setIsEditModalVisible = { setIsEditModalVisible }
 ) {
   const onClick = () => {
     IdentifierService.index(props.containerId, props.id).then((res) => {
@@ -18,6 +19,10 @@ function SidebarItem(
     props.setCurrentId(id);
   };
 
+  const prepUpdate = (id) => {
+    props.setIsEditModalVisible(true);
+    props.setCurrentId(id);
+  }
   return (
     <div>
       <button className="sidebar-Link" onClick={onClick}>
@@ -30,6 +35,14 @@ function SidebarItem(
         }}
       >
         Delete
+      </button>
+      <button 
+      className="button-function view"
+      onClick={() => {
+        prepUpdate(props.id);
+      }}
+      >
+        Edit
       </button>
     </div>
   );
