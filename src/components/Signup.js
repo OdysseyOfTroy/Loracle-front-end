@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import "react-datepicker/dist/react-datepicker.css"
+import "react-datepicker/dist/react-datepicker.css";
 import "../css/Signup.css";
 import AuthenticationService from "./Connections/Authentication.service";
 import { Link } from "react-router-dom";
@@ -16,8 +16,7 @@ export default function SignUp() {
     return email.length > 0 && password.length > 0;
   }
 
-  const onSubmit = useCallback(
-    (e) => {
+  const onSubmit = useCallback((e) => {
     e.preventDefault();
 
     AuthenticationService.register(
@@ -25,24 +24,20 @@ export default function SignUp() {
       email,
       password,
       passwordConfirmation
-    )
-    .then(() => {
+    ).then(() => {
       window.location.replace("/");
-    })
-  })
+    });
+  });
 
   return (
     <div className="page">
-      <div className="Background">
-      </div>
+      <div className="Background"></div>
       <div className="signup-Container">
-        <div >
+        <div>
           <h1 className="Title">Loracle</h1>
         </div>
         <div className="Signup">
-
           <Form onSubmit={onSubmit}>
-
             <Form.Group size="lg" controlId="display_name">
               <Form.Label>Display Name</Form.Label>
               <Form.Control

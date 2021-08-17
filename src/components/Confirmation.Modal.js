@@ -12,13 +12,9 @@ function ConfirmationModal(props) {
       <Modal.Body> {props.text} </Modal.Body>
 
       <Modal.Footer>
-        <Button onClick={props.closeAction}>
-          Cancel
-        </Button>
+        <Button onClick={props.closeAction}>Cancel</Button>
 
-        <Button onClick={props.continueAction}>
-          Continue
-        </Button>
+        <Button onClick={props.continueAction}>Continue</Button>
       </Modal.Footer>
     </Modal>
   );

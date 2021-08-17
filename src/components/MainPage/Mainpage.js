@@ -5,9 +5,8 @@ import "../../css/Mainpage.css";
 import Universalbar from "../UniversalBar";
 import { useParams } from "react-router-dom";
 import Information from "./InfoBox/Information";
-import ConfirmationModal from "../Confirmation.Modal"
-import IdentifierService from "../Connections/Identifier.service"
-
+import ConfirmationModal from "../Confirmation.Modal";
+import IdentifierService from "../Connections/Identifier.service";
 
 function Mainpage(props) {
   const { containerId } = useParams();
@@ -31,7 +30,6 @@ function Mainpage(props) {
     setIdentifierId(id);
   };
 
-
   return (
     <div className="page">
       <Universalbar></Universalbar>
@@ -50,14 +48,13 @@ function Mainpage(props) {
           setInformationView={setInformationView}
           setIsConfirmModalVisible={setIsConfirmModalVisible}
         ></Identifiers>
-        <Information 
-        containerId={containerId}
-        categoryId={categoryId}
-        identifierId={identifierId}
-        information={information}
+        <Information
+          containerId={containerId}
+          categoryId={categoryId}
+          identifierId={identifierId}
+          information={information}
         ></Information>
       </div>
-
     </div>
   );
 }

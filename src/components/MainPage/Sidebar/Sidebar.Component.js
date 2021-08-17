@@ -3,7 +3,7 @@ import SidebarItem from "./SidebarItem.Component";
 import NavSidebarItem from "./NavSidebarItem.Component";
 import CategoryService from "../../Connections/Category.service";
 import "../../../css/Sidebar.css";
-import ConfirmationModal from '../../Confirmation.Modal';
+import ConfirmationModal from "../../Confirmation.Modal";
 
 import { Button } from "react-bootstrap";
 import NewCategoryModal from "./NewCategoryModal";
@@ -63,7 +63,6 @@ function Sidebar(props) {
       getCategories();
     });
   });
-
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 

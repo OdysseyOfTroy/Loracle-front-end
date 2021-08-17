@@ -1,18 +1,17 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import DashboardService from '../Connections/Dashboard.service';
-import ContainerList from './Container.List';
+import React, { useState, useCallback, useEffect } from "react";
+import DashboardService from "../Connections/Dashboard.service";
+import ContainerList from "./Container.List";
 import "../../css/global.css";
 import "../../css/Dashboard.css";
-import Universalbar from '../UniversalBar';
-import ConfirmationModal from '../Confirmation.Modal';
-import { Button } from 'react-bootstrap';
-import NewContainerModal from '../Dashboard/NewContainerModal';
+import Universalbar from "../UniversalBar";
+import ConfirmationModal from "../Confirmation.Modal";
+import { Button } from "react-bootstrap";
+import NewContainerModal from "../Dashboard/NewContainerModal";
 
 function Dashboard(props) {
-
   //Define getting and setting the states of this component
   const [containers, setContainers] = useState([]);
-  const [containerId, setContainerId] = useState([null]); 
+  const [containerId, setContainerId] = useState([null]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
@@ -22,16 +21,16 @@ function Dashboard(props) {
   // Callback to update the shown containers
   const getContainers = useCallback(
     (id) => {
-      DashboardService.index()
-        .then((response) => {
-        if(response!== undefined) {
+      DashboardService.index().then((response) => {
+        if (response !== undefined) {
           setContainers(response.data);
           setContainerId(id || null);
         }
       });
-    },  [setContainers, setContainerId]
+    },
+    [setContainers, setContainerId]
   );
-  
+
   //retrieve data on load
   useEffect(() => {
     getContainers();
@@ -50,17 +49,18 @@ function Dashboard(props) {
       if (containerId === id) {
         setContainerId(null);
       } else {
-        setContainerId(id)
+        setContainerId(id);
       }
-    }, [setContainerId]
-  )
+    },
+    [setContainerId]
+  );
 
   //delete selected container
   const deleteContainer = useCallback(() => {
     DashboardService.delete(containerId).then(() => {
       setIsConfirmModalVisible(false);
       getContainers();
-    }); 
+    });
   });
 
   return (
@@ -74,16 +74,25 @@ function Dashboard(props) {
           {containers.map((container, index) => {
             return (
               <div>
-                <ContainerList selectContainer={selectContainer} 
-                id={container.id} 
-                title={container.title} 
-                key={index} 
-                description={container.description} 
-                setIsConfirmModalVisible={setIsConfirmModalVisible}/>
+                <ContainerList
+                  selectContainer={selectContainer}
+                  id={container.id}
+                  title={container.title}
+                  key={index}
+                  description={container.description}
+                  setIsConfirmModalVisible={setIsConfirmModalVisible}
+                />
               </div>
-            )
+            );
           })}
-          <Button variant="primary" onClick={() => {setIsModalVisible(true);}}>New container</Button>
+          <Button
+            variant="primary"
+            onClick={() => {
+              setIsModalVisible(true);
+            }}
+          >
+            New container
+          </Button>
         </div>
       </div>
 
@@ -95,7 +104,7 @@ function Dashboard(props) {
         closeAction={() => setIsConfirmModalVisible(false)}
       />
 
-      <NewContainerModal 
+      <NewContainerModal
         visible={isModalVisible}
         title={`New Container`}
         continueAction={createContainer}
@@ -104,19 +113,18 @@ function Dashboard(props) {
         setDescription={setDescription}
       />
     </div>
-  )
+  );
 }
 
 export default Dashboard;
 
-
 //code that may need to be used again
 
-  //create containerlist for each container
-  // containers.forEach((container) => {
-  //   <ContainerList
-  //       id={container.id}
-  //       title={container.title}
-  //       description={container.description}
-  //   />
-  // })
+//create containerlist for each container
+// containers.forEach((container) => {
+//   <ContainerList
+//       id={container.id}
+//       title={container.title}
+//       description={container.description}
+//   />
+// })
