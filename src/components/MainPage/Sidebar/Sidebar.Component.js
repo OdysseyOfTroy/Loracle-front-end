@@ -25,6 +25,7 @@ function Sidebar(props) {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [currentId, setCurrentId] = useState(-1);
 
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
 
@@ -57,7 +58,7 @@ function Sidebar(props) {
 
   //delete selected container
   const deleteCategory = useCallback(() => {
-    CategoryService.delete(props.containerId, props.id).then(() => {
+    CategoryService.delete(props.containerId, currentId).then(() => {
       setIsConfirmModalVisible(false);
       getCategories();
     });
@@ -91,6 +92,7 @@ function Sidebar(props) {
                 containerId={props.containerId}
                 setIdentifierView={props.setIdentifierView}
                 setIsConfirmModalVisible={setIsConfirmModalVisible}
+                setCurrentId={setCurrentId}
               />
             );
           })}

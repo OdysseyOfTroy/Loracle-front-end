@@ -1,16 +1,24 @@
-import React from "react";
+import React, {useState} from "react";
 import "../../../css/Sidebar.css";
 import IdentifierService from "../../Connections/Identifier.service";
 
 function SidebarItem(
   props,
-  setIsConfirmModalVisible = { setIsConfirmModalVisible }
+  setIsConfirmModalVisible = { setIsConfirmModalVisible },
+  setCurrentId = {setCurrentId}
 ) {
+
+
   const onClick = () => {
     IdentifierService.index(props.containerId, props.id).then((res) => {
       props.setIdentifierView(res.data, props.id);
     });
   };
+
+  const prepDelete = (id) => {
+    props.setIsConfirmModalVisible(true);
+    props.setCurrentId(id)
+  }
 
   return (
     <div>
@@ -20,7 +28,7 @@ function SidebarItem(
       <button
         className="button-function delete"
         onClick={() => {
-          props.setIsConfirmModalVisible(true);
+          prepDelete(props.id);
         }}
       >
         Delete
