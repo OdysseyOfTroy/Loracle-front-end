@@ -14,7 +14,17 @@ class InformationService {
     params["information"]["info"] = info;
     return http.post(
       `/containers/${containerId}/categories/${categoryId}/identifiers/${identifierId}/information`,
-      params,
+      params
+    );
+  }
+
+  update(containerId, categoryId, identifierId, id, infoTitle, info) {
+    let params = {};
+    params["information"] = {};
+    params["information"]["infoTitle"] = infoTitle;
+    params["information"]["info"] = info;
+    return http.put(
+      `/containers/${containerId}/categories/${categoryId}/identifiers/${identifierId}/information/${id}`,
       params
     );
   }

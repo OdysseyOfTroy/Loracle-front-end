@@ -2,6 +2,7 @@ import React, { useState, useCallback } from "react";
 import "../../../css/Identifiers.css";
 import ConfirmationModal from "../../Confirmation.Modal";
 import InformationService from "../../Connections/Information.service";
+import EditInformationModal from "./EditInformationModal";
 import NewInformationModal from "./NewInformationModal";
 
 function Information(props) {
@@ -11,6 +12,7 @@ function Information(props) {
 
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
 
   const deleteInformation = () => {
     setIsConfirmModalVisible(false);
@@ -26,6 +28,23 @@ function Information(props) {
     setIsConfirmModalVisible(true);
     setCurrentId(id);
   };
+
+  const prepEdit = (id) => {
+    setIsEditModalVisible(true);
+    setCurrentId(id);
+  };
+
+  const editInformation = useCallback(() => {
+    InformationService.update(
+      props.containerId,
+      props.categoryId,
+      props.identifierId,
+      currentId,
+      infoTitle,
+      info
+    );
+    setIsEditModalVisible(false);
+  })
 
   const createInformation = useCallback(() => {
     InformationService.create(
@@ -49,7 +68,8 @@ function Information(props) {
                 {" "}
                 {information.infoTitle} {information.info}
               </button>
-              <button onClick={() => prepDelete(information.id)}>Delete</button>{" "}
+              <button onClick={() => prepDelete(information.id)}>Delete</button>
+              <button onClick={() => prepEdit(information.id)}>Edit</button> {" "}
             </div>
           );
         })}
@@ -76,6 +96,15 @@ function Information(props) {
         title={`new Information`}
         continueAction={createInformation}
         closeAction={() => setIsModalVisible(false)}
+        setInfoTitle={setInfoTitle}
+        setInfo={setInfo}
+      />
+
+      <EditInformationModal
+        visible={isEditModalVisible}
+        title={`edit`}
+        continueAction={editInformation}
+        closeAction={() => setIsEditModalVisible(false)}
         setInfoTitle={setInfoTitle}
         setInfo={setInfo}
       />
