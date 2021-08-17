@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import "../../../css/Identifiers.css"
 
 function Information(props) {

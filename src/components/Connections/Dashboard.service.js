@@ -1,4 +1,4 @@
-import http from "../../http-common"
+import http from "../../http-common";
 
 class DashboardService {
   index() {
@@ -25,4 +25,4 @@ class DashboardService {
   }
 }
 
-export default new DashboardService;
+export default new DashboardService();
