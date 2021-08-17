@@ -25,7 +25,6 @@ class CategoryService {
     return http.put(`/containers/${containerId}/categories/${id}`, params);
   }
 
-
   delete(containerId, id) {
     return http.delete(`/containers/${containerId}/categories/${id}`);
   }

@@ -17,6 +17,16 @@ class IdentifierService {
     );
   }
 
+  update(containerId, categoryId, id, title) {
+    let params = {};
+    params["identifier"] = {};
+    params["identifier"]["title"] = title;
+    return http.put(
+      `/containers/${containerId}/categories/${categoryId}/identifiers/${id}`,
+      params
+    );
+  }
+
   delete(containerId, categoryId, id) {
     return http.delete(
       `/containers/${containerId}/categories/${categoryId}/identifiers/${id}`
