@@ -1,8 +1,21 @@
-import http from "../../http-common"
+import http from "../../http-common";
 
 class InformationService {
   index(containerId, categoryId, identifierId) {
-    return http.get(`/containers/${containerId}/categories/${categoryId}/identifiers/${identifierId}/information`);
+    return http.get(
+      `/containers/${containerId}/categories/${categoryId}/identifiers/${identifierId}/information`
+    );
+  }
+
+  create(containerId, categoryId, identifierId, infoTitle, info) {
+    let params = {};
+    params["information"] = {};
+    params["information"]["infoTitle"] = infoTitle;
+    params["information"]["info"] = info;
+    return http.post(
+      `/containers/${containerId}/categories/${categoryId}/identifiers/${identifierId}/information`, params,
+      params
+    );
   }
 
   delete(containerId, categoryId, identifierId, id) {
@@ -12,4 +25,4 @@ class InformationService {
   }
 }
 
-export default new InformationService;
+export default new InformationService();

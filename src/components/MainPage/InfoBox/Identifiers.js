@@ -42,13 +42,13 @@ function Identifiers(props) {
   return (
     <div className="list-row">
       <div className="col=md-6">
-        {props.identifiers.map((identifier, idx, idy) => {
+        {props.identifiers.map((identifier, idx) => {
 
           return (<div><button onClick={() => onClick(identifier.id)} key={idx}> {identifier.title}</button>
           <button onClick={() => prepDelete(identifier.id)}>Delete</button></div>);
         })} 
 
-        <button onClick={() => {setIsModalVisible(true)}}>add</button>
+        <button onClick={() => {setIsModalVisible(true)}}>add Identifier</button>
       </div>
       <ConfirmationModal
         visible={isConfirmModalVisible}

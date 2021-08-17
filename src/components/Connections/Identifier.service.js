@@ -11,7 +11,10 @@ class IdentifierService {
     let params = {};
     params["identifier"] = {};
     params["identifier"]["title"] = title;
-    return http.post(`/containers/${containerId}/categories/${categoryId}/identifiers`, params);
+    return http.post(
+      `/containers/${containerId}/categories/${categoryId}/identifiers`,
+      params
+    );
   }
 
   delete(containerId, categoryId, id) {

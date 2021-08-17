@@ -1,32 +1,66 @@
-import React, {useState} from "react";
-import "../../../css/Identifiers.css"
-import ConfirmationModal from "../../Confirmation.Modal"
+import React, { useState, useCallback } from "react";
+import "../../../css/Identifiers.css";
+import ConfirmationModal from "../../Confirmation.Modal";
 import InformationService from "../../Connections/Information.service";
+import NewInformationModal from "./NewInformationModal";
 
 function Information(props) {
-
-  const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  const [infoTitle, setInfoTitle] = useState("");
+  const [info, setInfo] = useState("");
   const [currentId, setCurrentId] = useState(-1);
 
+  const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
   const deleteInformation = () => {
-    setIsConfirmModalVisible(false); 
-    InformationService.delete(props.containerId, props.categoryId, props.identifierId, currentId).then(() => {
-    })
-  }
+    setIsConfirmModalVisible(false);
+    InformationService.delete(
+      props.containerId,
+      props.categoryId,
+      props.identifierId,
+      currentId
+    ).then(() => {});
+  };
 
   const prepDelete = (id) => {
     setIsConfirmModalVisible(true);
-    setCurrentId(id)
-  }
+    setCurrentId(id);
+  };
+
+  const createInformation = useCallback(() => {
+    InformationService.create(
+      props.containerId,
+      props.categoryId,
+      props.identifierId,
+      infoTitle,
+      info
+    ).then(() => {
+      setIsModalVisible(false);
+    });
+  });
 
   return (
     <div className="list-row">
       <div className="col=md-6">
         {props.information.map((information, idx) => {
+          return (
+            <div>
+              <button key={idx}>
+                {" "}
+                {information.infoTitle} {information.info}
+              </button>
+              <button onClick={() => prepDelete(information.id)}>Delete</button>{" "}
+            </div>
+          );
+        })}
 
-          return (<div><button key={idx}> {information.infoTitle} {information.info}</button>
-          <button onClick={() => prepDelete(information.id)}>Delete</button> </div>);
-        })} 
+        <button
+          onClick={() => {
+            setIsModalVisible(true);
+          }}
+        >
+          add information
+        </button>
       </div>
 
       <ConfirmationModal
@@ -36,8 +70,17 @@ function Information(props) {
         continueAction={deleteInformation}
         closeAction={() => setIsConfirmModalVisible(false)}
       />
+
+      <NewInformationModal
+        visible={isModalVisible}
+        title={`new Information`}
+        continueAction={createInformation}
+        closeAction={() => setIsModalVisible(false)}
+        setInfoTitle={setInfoTitle}
+        setInfo={setInfo}
+      />
     </div>
-  )
+  );
 }
 
-export default Information
+export default Information;
