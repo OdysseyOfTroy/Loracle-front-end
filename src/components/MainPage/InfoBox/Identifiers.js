@@ -13,12 +13,11 @@ function Identifiers(props) {
 
   const onClick = (id) => {
     InformationService.index(props.containerId, props.categoryId, id).then((res)=> {
-      props.setInformationView(res.data)
-      // console.log(res.data)
+      props.setInformationView(res.data, id)
     })
   }
 
-  const deleteIdentifier = (id) => {
+  const deleteIdentifier = () => {
     setIsConfirmModalVisible(false); 
     IdentifierService.delete(props.containerId, props.categoryId, currentId).then(() => {
     })
@@ -37,11 +36,13 @@ function Identifiers(props) {
           return (<div><button onClick={() => onClick(identifier.id)} key={idx}> {identifier.title}</button>
           <button onClick={() => prepDelete(identifier.id)}>Delete</button></div>);
         })} 
+
+        <button>add</button>
       </div>
       <ConfirmationModal
         visible={isConfirmModalVisible}
-        title={`Delete container?`}
-        text={`This action will delete this container and all associated notes. Do you wish to continue?`}
+        title={`Delete Identifier?`}
+        text={`This action will delete this identifier and all associated notes. Do you wish to continue?`}
         continueAction={deleteIdentifier}
         closeAction={() => setIsConfirmModalVisible(false)}
       />

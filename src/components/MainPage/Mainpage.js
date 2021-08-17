@@ -13,6 +13,7 @@ function Mainpage(props) {
   const { containerId } = useParams();
 
   const [categoryId, setCategoryId] = useState(-1);
+  const [identifierId, setIdentifierId] = useState(-1);
   const [identifiers, setIdentifiers] = useState([]);
   const [information, setInformation] = useState([]);
 
@@ -24,9 +25,10 @@ function Mainpage(props) {
     setCategoryId(id);
   };
 
-  const setInformationView = (data) => {
+  const setInformationView = (data, id) => {
     setInformation(data);
     setIdentifiers([]);
+    setIdentifierId(id);
   };
 
 
@@ -48,7 +50,11 @@ function Mainpage(props) {
           setInformationView={setInformationView}
           setIsConfirmModalVisible={setIsConfirmModalVisible}
         ></Identifiers>
-        <Information information={information}
+        <Information 
+        containerId={containerId}
+        categoryId={categoryId}
+        identifierId={identifierId}
+        information={information}
         ></Information>
       </div>
 
