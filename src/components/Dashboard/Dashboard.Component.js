@@ -7,6 +7,7 @@ import Universalbar from "../UniversalBar";
 import ConfirmationModal from "../Confirmation.Modal";
 import { Button } from "react-bootstrap";
 import NewContainerModal from "../Dashboard/NewContainerModal";
+import EditContainerModal from "./EditContainerModal";
 
 function Dashboard(props) {
   //Define getting and setting the states of this component
@@ -16,6 +17,7 @@ function Dashboard(props) {
   const [description, setDescription] = useState("");
 
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   // Callback to update the shown containers
@@ -63,6 +65,16 @@ function Dashboard(props) {
     });
   });
 
+  const editContainer = useCallback(() => {
+    DashboardService.update(
+      containerId,
+      title,
+      description
+    );
+    setIsEditModalVisible(false);
+    getContainers();
+  });
+
   return (
     <div className="global-background">
       <Universalbar />
@@ -81,6 +93,7 @@ function Dashboard(props) {
                   key={index}
                   description={container.description}
                   setIsConfirmModalVisible={setIsConfirmModalVisible}
+                  setIsEditModalVisible={setIsEditModalVisible}
                 />
               </div>
             );
@@ -109,6 +122,15 @@ function Dashboard(props) {
         title={`New Container`}
         continueAction={createContainer}
         closeAction={() => setIsModalVisible(false)}
+        setTitle={setTitle}
+        setDescription={setDescription}
+      />
+
+      <EditContainerModal
+        visible={isEditModalVisible}
+        title={`Edit`}
+        continueAction={editContainer}
+        closeAction={() => setIsEditModalVisible(false)}
         setTitle={setTitle}
         setDescription={setDescription}
       />
