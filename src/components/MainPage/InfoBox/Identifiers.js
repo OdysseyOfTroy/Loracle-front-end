@@ -9,6 +9,7 @@ import ConfirmationModal from "../../Confirmation.Modal"
 function Identifiers(props) {
 
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  const [currentId, setCurrentId] = useState(-1);
 
   const onClick = (id) => {
     InformationService.index(props.containerId, props.categoryId, id).then((res)=> {
@@ -19,10 +20,14 @@ function Identifiers(props) {
 
   const deleteIdentifier = (id) => {
     setIsConfirmModalVisible(false); 
-    IdentifierService.delete(props.containerId, props.categoryId, id).then(() => {
+    IdentifierService.delete(props.containerId, props.categoryId, currentId).then(() => {
     })
   }
 
+  const prepDelete = (id) => {
+    setIsConfirmModalVisible(true);
+    setCurrentId(id)
+  }
 
   return (
     <div className="list-row">
@@ -30,7 +35,7 @@ function Identifiers(props) {
         {props.identifiers.map((identifier, idx, idy) => {
 
           return (<div><button onClick={() => onClick(identifier.id)} key={idx}> {identifier.title}</button>
-          <button onClick={() => deleteIdentifier(identifier.id)}>Delete</button></div>);
+          <button onClick={() => prepDelete(identifier.id)}>Delete</button></div>);
         })} 
       </div>
       <ConfirmationModal
