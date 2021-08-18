@@ -20,6 +20,7 @@
     top: 0;
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
+    overflow: scroll;
 }
 
 .sidebar-wrap {
@@ -70,6 +71,7 @@
     height: 60px;
     font-size: 150%;
     text-decoration: none;
+
     
 }
 
@@ -100,5 +102,10 @@
 
 .delete:hover {
   background-color: red;
+  color: white;
+}
+
+.view:hover {
+  background-color: blue;
   color: white;
 }

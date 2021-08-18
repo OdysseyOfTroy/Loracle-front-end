@@ -28,6 +28,7 @@ function SidebarItem(
       <button className="sidebar-Link" onClick={onClick}>
         <span>{props.title}</span>
       </button>
+      <div className="side-buttons">
       <button
         className="button-function delete"
         onClick={() => {
@@ -44,6 +45,7 @@ function SidebarItem(
       >
         Edit
       </button>
+      </div>
     </div>
   );
 }
