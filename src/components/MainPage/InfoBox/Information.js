@@ -21,7 +21,10 @@ function Information(props) {
       props.categoryId,
       props.identifierId,
       currentId
-    ).then(() => {});
+    ).then(() => {
+      setIsConfirmModalVisible(false);
+      props.getInformation(props.identifierId)
+    });
   };
 
   const prepDelete = (id) => {
@@ -44,6 +47,7 @@ function Information(props) {
       info
     );
     setIsEditModalVisible(false);
+    props.getInformation(props.identifierId)
   })
 
   const createInformation = useCallback(() => {
@@ -55,6 +59,7 @@ function Information(props) {
       info
     ).then(() => {
       setIsModalVisible(false);
+      props.getInformation(props.identifierId)
     });
   });
 
@@ -78,6 +83,7 @@ function Information(props) {
           className="Information-button"
           onClick={() => {
             setIsModalVisible(true);
+            
           }}
         >
           add information

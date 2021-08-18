@@ -6,6 +6,7 @@ import Universalbar from "../UniversalBar";
 import { useParams } from "react-router-dom";
 import Information from "./InfoBox/Information";
 import IdentifierService from "../Connections/Identifier.service";
+import InformationService from "../Connections/Information.service";
 
 function Mainpage() {
   const { containerId } = useParams();
@@ -19,6 +20,14 @@ function Mainpage() {
     IdentifierService.index(containerId, currentId).then((res) => {
       setIdentifierView(res.data, currentId);
     });
+  };
+
+  const getInformation = (currentId) => {
+    InformationService.index(containerId, categoryId, currentId).then(
+      (res) => {
+        setInformationView(res.data, currentId);
+      }
+    );
   };
 
   const setIdentifierView = (data, id) => {
@@ -51,12 +60,14 @@ function Mainpage() {
           identifiers={identifiers}
           setInformationView={setInformationView}
           getIdentifiers={getIdentifiers}
+          getInformation={getInformation}
         ></Identifiers>
         <Information
           containerId={containerId}
           categoryId={categoryId}
           identifierId={identifierId}
           information={information}
+          getInformation={getInformation}
         ></Information>
       </div>
     </div>

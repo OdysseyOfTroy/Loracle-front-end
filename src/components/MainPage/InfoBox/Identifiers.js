@@ -15,14 +15,6 @@ function Identifiers(props) {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const onClick = (id) => {
-    InformationService.index(props.containerId, props.categoryId, id).then(
-      (res) => {
-        props.setInformationView(res.data, id);
-      }
-    );
-  };
-
   const deleteIdentifier = useCallback(() => {
     IdentifierService.delete(
       props.containerId,
@@ -30,7 +22,7 @@ function Identifiers(props) {
       currentId
     ).then(() => {
       setIsConfirmModalVisible(false);
-      props.getIdentifiers(props.categoryId)
+      props.getIdentifiers(props.categoryId);
     });
   });
 
@@ -43,7 +35,6 @@ function Identifiers(props) {
     setIsEditModalVisible(true);
     setCurrentId(id);
   };
-  
 
   const createIdentifier = useCallback(() => {
     IdentifierService.create(props.containerId, props.categoryId, title).then(
@@ -61,9 +52,9 @@ function Identifiers(props) {
       currentId,
       title
     ).then(() => {
-    setIsEditModalVisible(false);
-    props.getIdentifiers(props.categoryId);
-    })
+      setIsEditModalVisible(false);
+      props.getIdentifiers(props.categoryId);
+    });
   });
 
   return (
@@ -72,7 +63,11 @@ function Identifiers(props) {
         {props.identifiers.map((identifier, idx) => {
           return (
             <div key={idx}>
-              <button onClick={() => onClick(identifier.id)}>
+              <button
+                onClick={() => {
+                  props.getInformation(identifier.id);
+                }}
+              >
                 {identifier.title}
               </button>
               <button onClick={() => prepDelete(identifier.id)}>Delete</button>
