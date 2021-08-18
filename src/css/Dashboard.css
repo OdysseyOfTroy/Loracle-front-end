@@ -3,15 +3,22 @@
     color: violet;
 }
 
+.Cards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
 .card {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    width: 30%;
+    align-self: center;
+    flex: 1 1 1;
+    width: 100%;
     background: #0f1014;
     text-align: center;
+    min-width: 400px;
+    max-width: 400px;
 
 }
 
@@ -24,7 +31,6 @@
 
 .card-text {
     display: flex;
-    flex: 1 1 auto;
     flex-direction: column;
     padding: 1rem;
   }
@@ -71,7 +77,6 @@
     width: 50%;
     background-color: #1b1d22;
     border-top: none;
-    border-bottom: none;
     border-color: violet;
 }
 
@@ -84,4 +89,35 @@
 .view {
     color: blue;
     border-right: none;
+}
+
+.new-container {
+  background-color: #15171c;
+  color: violet;
+  border-radius: 8px;
+  border-color: violet;
+  align-self: center;
+  margin: 2%;
+  height: 100%;
+  padding: 5rem;
+  font-size: 160%;
+}
+
+.new-container:hover{
+  background-color: violet;
+  color: black;
+  text-decoration: underline;
+}
+
+.into-container {
+  background-color: #1b1d22;
+  height: 20%;
+  color: violet;
+  border: none;
+  border-color: violet;
+}
+
+.into-container:hover {
+  background-color: violet;
+  color: black;
 }

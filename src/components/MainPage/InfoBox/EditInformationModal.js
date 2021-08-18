@@ -3,9 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import propTypes from "prop-types";
 
 function EditInformationModal(
-  props,
-  setInfoTitle = { setInfoTitle },
-  setInfo = { setInfo }
+  props
 ) {
   return (
     <Modal show={props.visible} onHide={props.closeAction}>
@@ -16,7 +14,7 @@ function EditInformationModal(
       <Modal.Body>
         <form>
           <div className="form-group">
-            <label for="Title-label" className="col-form-label">
+            <label htmlFor="Title-label" className="col-form-label">
               Title:
             </label>
             <input
@@ -24,17 +22,21 @@ function EditInformationModal(
               className="form-control"
               id="title-name"
               onChange={(e) => props.setInfoTitle(e.target.value)}
-            />
+              value={props.infoTitle}
+            >
+            </input>
           </div>
           <div className="form-group">
-            <label for="Description-text" className="col-form-label">
+            <label htmlFor="Description-text" className="col-form-label">
               Details:
             </label>
             <textarea
               className="form-control"
               id="description-text"
               onChange={(e) => props.setInfo(e.target.value)}
-            ></textarea>
+              value={props.info}
+            >
+            </textarea>
           </div>
         </form>
       </Modal.Body>

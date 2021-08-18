@@ -21,6 +21,7 @@
     border-top-right-radius: 25px;
     border-bottom-right-radius: 25px;
     overflow: scroll;
+    text-align: center;
 }
 
 .sidebar-wrap {
@@ -37,7 +38,7 @@
 .navSidebar-Link {
   display: flex;
   color: violet;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   background-color: #15171c;
@@ -62,7 +63,7 @@
 .sidebar-Link {
     display: flex;
     color: violet;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     background-color: #15171c;
@@ -78,7 +79,7 @@
 .sidebar-item {
   display: flex;
   color: violet;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   background-color: #15171c;
@@ -108,4 +109,18 @@
 .view:hover {
   background-color: blue;
   color: white;
+}
+
+.New-Category {
+  background-color: #15171c;
+  color: violet;
+  font-size: 140%;
+  margin: 7%;
+  border: none;
+  border-radius: 8px;
+}
+
+.New-Category:hover {
+  background-color: violet;
+  color: black;
 }

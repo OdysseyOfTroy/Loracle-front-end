@@ -5,18 +5,32 @@ import "../../css/Mainpage.css";
 import Universalbar from "../UniversalBar";
 import { useParams } from "react-router-dom";
 import Information from "./InfoBox/Information";
-import ConfirmationModal from "../Confirmation.Modal";
 import IdentifierService from "../Connections/Identifier.service";
+import InformationService from "../Connections/Information.service";
+import SwitchComponents from "../switchComponents";
 
-function Mainpage(props) {
+function Mainpage() {
   const { containerId } = useParams();
 
   const [categoryId, setCategoryId] = useState(-1);
   const [identifierId, setIdentifierId] = useState(-1);
   const [identifiers, setIdentifiers] = useState([]);
   const [information, setInformation] = useState([]);
+  const [activeComponent, setActiveComponent] = useState("")
 
-  const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  const getIdentifiers = (currentId) => {
+    IdentifierService.index(containerId, currentId).then((res) => {
+      setIdentifierView(res.data, currentId);
+    });
+  };
+
+  const getInformation = (currentId) => {
+    InformationService.index(containerId, categoryId, currentId).then(
+      (res) => {
+        setInformationView(res.data, currentId);
+      }
+    );
+  };
 
   const setIdentifierView = (data, id) => {
     setIdentifiers(data);
@@ -38,22 +52,32 @@ function Mainpage(props) {
           containerId={containerId}
           categoryId={categoryId}
           setIdentifierView={setIdentifierView}
+          getIdentifiers={getIdentifiers}
+          setActiveComponent={setActiveComponent}
         ></Sidebar>
       </div>
       <div className="identifiers">
+        <SwitchComponents active={activeComponent}>
         <Identifiers
+          name="identifiers"
           containerId={containerId}
           categoryId={categoryId}
           identifiers={identifiers}
           setInformationView={setInformationView}
-          setIsConfirmModalVisible={setIsConfirmModalVisible}
+          getIdentifiers={getIdentifiers}
+          getInformation={getInformation}
+          setActiveComponent={setActiveComponent}
         ></Identifiers>
         <Information
+          name="information"
           containerId={containerId}
           categoryId={categoryId}
           identifierId={identifierId}
           information={information}
+          getInformation={getInformation}
         ></Information>
+        </SwitchComponents>
+
       </div>
     </div>
   );

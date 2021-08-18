@@ -7,6 +7,12 @@ class InformationService {
     );
   }
 
+  get(containerId, categoryId, identifierId, id) {
+    return http.get(
+      `/containers/${containerId}/categories/${categoryId}/identifiers/${identifierId}/information/${id}`
+    )
+  }
+
   create(containerId, categoryId, identifierId, infoTitle, info) {
     let params = {};
     params["information"] = {};

@@ -1,18 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../../css/Sidebar.css";
-import IdentifierService from "../../Connections/Identifier.service";
 
 function SidebarItem(
-  props,
-  setIsConfirmModalVisible = { setIsConfirmModalVisible },
-  setCurrentId = { setCurrentId },
-  setIsEditModalVisible = { setIsEditModalVisible }
+  props
 ) {
-  const onClick = () => {
-    IdentifierService.index(props.containerId, props.id).then((res) => {
-      props.setIdentifierView(res.data, props.id);
-    });
-  };
 
   const prepDelete = (id) => {
     props.setIsConfirmModalVisible(true);
@@ -22,10 +13,13 @@ function SidebarItem(
   const prepUpdate = (id) => {
     props.setIsEditModalVisible(true);
     props.setCurrentId(id);
-  }
+  };
+
   return (
     <div>
-      <button className="sidebar-Link" onClick={onClick}>
+      <button className="sidebar-Link" onClick={() => {
+        props.getIdentifiers(props.id)
+        props.setActiveComponent("identifiers")}}>
         <span>{props.title}</span>
       </button>
       <div className="side-buttons">

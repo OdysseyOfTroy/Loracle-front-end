@@ -21,16 +21,28 @@ function Information(props) {
       props.categoryId,
       props.identifierId,
       currentId
-    ).then(() => {});
+    ).then(() => {
+      setIsConfirmModalVisible(false);
+      props.getInformation(props.identifierId);
+    });
   };
+
+  const getInformationPiece = useCallback((id) => {
+    InformationService.get(
+      props.containerId,
+      props.categoryId,
+      props.identifierId,
+      id
+    ).then((res) => {
+      setInfoTitle(res.data.infoTitle);
+      setInfo(res.data.info);
+      setIsEditModalVisible(true);
+      setCurrentId(id);
+    });
+  });
 
   const prepDelete = (id) => {
     setIsConfirmModalVisible(true);
-    setCurrentId(id);
-  };
-
-  const prepEdit = (id) => {
-    setIsEditModalVisible(true);
     setCurrentId(id);
   };
 
@@ -42,10 +54,11 @@ function Information(props) {
       currentId,
       infoTitle,
       info
-    );
-    setIsEditModalVisible(false);
-  })
-
+    ).then(() => {
+      setIsEditModalVisible(false);
+      props.getInformation(props.identifierId);
+    });
+  });
   const createInformation = useCallback(() => {
     InformationService.create(
       props.containerId,
@@ -55,26 +68,29 @@ function Information(props) {
       info
     ).then(() => {
       setIsModalVisible(false);
+      props.getInformation(props.identifierId);
     });
   });
 
   return (
     <div className="list-row">
-      <div className="col=md-6">
+      <div className="col">
         {props.information.map((information, idx) => {
           return (
-            <div>
-              <button key={idx}>
-                {" "}
-                {information.infoTitle} {information.info}
+            <div key={idx}>
+              <button
+                className="info-Title"
+                onClick={() => getInformationPiece(information.id)}
+              >
+                {information.infoTitle}
               </button>
-              <button onClick={() => prepDelete(information.id)}>Delete</button>
-              <button onClick={() => prepEdit(information.id)}>Edit</button> {" "}
+              <button className="Delete" onClick={() => prepDelete(information.id)}>Delete</button>
             </div>
           );
         })}
 
         <button
+          className="Information-button"
           onClick={() => {
             setIsModalVisible(true);
           }}
@@ -107,6 +123,8 @@ function Information(props) {
         closeAction={() => setIsEditModalVisible(false)}
         setInfoTitle={setInfoTitle}
         setInfo={setInfo}
+        infoTitle={infoTitle}
+        info={info}
       />
     </div>
   );

@@ -4,8 +4,6 @@ import NavSidebarItem from "./NavSidebarItem.Component";
 import CategoryService from "../../Connections/Category.service";
 import "../../../css/Sidebar.css";
 import ConfirmationModal from "../../Confirmation.Modal";
-
-import { Button } from "react-bootstrap";
 import NewCategoryModal from "./NewCategoryModal";
 import EditCategoryModal from "./EditCategoryModal";
 
@@ -18,10 +16,6 @@ function Sidebar(props) {
     },
   ];
 
-  staticLinks.forEach((props) => {
-    <NavSidebarItem id={props.id} title={props.title} path={props.path} />;
-  });
-
   //define getters and setters for categories
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -30,6 +24,8 @@ function Sidebar(props) {
 
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
+
+
 
   //Callback to update the shown categories
   const getCategories = useCallback(() => {
@@ -47,10 +43,6 @@ function Sidebar(props) {
     getCategories();
   }, [getCategories]);
 
-  categories.forEach((category) => {
-    <SidebarItem id={category.id} title={category.name} path={category.path} />;
-  });
-
   const createCategory = useCallback(() => {
     CategoryService.create(props.containerId, name, description).then(() => {
       setIsModalVisible(false);
@@ -59,12 +51,7 @@ function Sidebar(props) {
   });
 
   const editCategory = useCallback(() => {
-    CategoryService.update(
-      props.containerId,
-      currentId,
-      name,
-      description
-    );
+    CategoryService.update(props.containerId, currentId, name, description);
     setIsEditModalVisible(false);
   });
 
@@ -105,18 +92,20 @@ function Sidebar(props) {
                 setIsConfirmModalVisible={setIsConfirmModalVisible}
                 setIsEditModalVisible={setIsEditModalVisible}
                 setCurrentId={setCurrentId}
+                getIdentifiers={props.getIdentifiers}
+                setActiveComponent={props.setActiveComponent}
               />
             );
           })}
 
-          <Button
-            variant="primary"
+          <button
+            className="New-Category"
             onClick={() => {
               setIsModalVisible(true);
             }}
           >
             New Category
-          </Button>
+          </button>
         </div>
       </div>
       <NewCategoryModal

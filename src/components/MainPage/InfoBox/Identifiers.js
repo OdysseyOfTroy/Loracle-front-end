@@ -2,10 +2,8 @@ import React, { useState, useCallback } from "react";
 
 import "../../../css/Identifiers.css";
 import IdentifierService from "../../Connections/Identifier.service";
-import InformationService from "../../Connections/Information.service";
 import ConfirmationModal from "../../Confirmation.Modal";
 import NewIdentifierModal from "./NewIdentifierModal";
-import EditCategoryModal from "../Sidebar/EditCategoryModal";
 import EditIdentifierModal from "./EditIdentifierModal";
 
 function Identifiers(props) {
@@ -16,22 +14,18 @@ function Identifiers(props) {
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const onClick = (id) => {
-    InformationService.index(props.containerId, props.categoryId, id).then(
-      (res) => {
-        props.setInformationView(res.data, id);
-      }
-    );
-  };
+  
 
-  const deleteIdentifier = () => {
-    setIsConfirmModalVisible(false);
+  const deleteIdentifier = useCallback(() => {
     IdentifierService.delete(
       props.containerId,
       props.categoryId,
       currentId
-    ).then(() => {});
-  };
+    ).then(() => {
+      setIsConfirmModalVisible(false);
+      props.getIdentifiers(props.categoryId);
+    });
+  });
 
   const prepDelete = (id) => {
     setIsConfirmModalVisible(true);
@@ -41,12 +35,13 @@ function Identifiers(props) {
   const prepUpdate = (id) => {
     setIsEditModalVisible(true);
     setCurrentId(id);
-  }
+  };
 
   const createIdentifier = useCallback(() => {
     IdentifierService.create(props.containerId, props.categoryId, title).then(
       () => {
         setIsModalVisible(false);
+        props.getIdentifiers(props.categoryId);
       }
     );
   });
@@ -57,27 +52,34 @@ function Identifiers(props) {
       props.categoryId,
       currentId,
       title
-    );
-    setIsEditModalVisible(false);
+    ).then(() => {
+      setIsEditModalVisible(false);
+      props.getIdentifiers(props.categoryId);
+    });
   });
 
   return (
     <div className="list-row">
-      <div className="col=md-6">
+      <div className="col">
         {props.identifiers.map((identifier, idx) => {
           return (
-            <div>
-              <button onClick={() => onClick(identifier.id)} key={idx}>
-                {" "}
+            <div key={idx}>
+              <button className="info-Title"
+                onClick={() => {
+                  props.getInformation(identifier.id);
+                  props.setActiveComponent("information")
+                }}
+              >
                 {identifier.title}
               </button>
-              <button onClick={() => prepDelete(identifier.id)}>Delete</button>
-              <button onClick={() => prepUpdate(identifier.id)}>Edit</button>
+              <button className="Delete" onClick={() => prepDelete(identifier.id)}>Delete</button>
+              <button className="Edit" onClick={() => prepUpdate(identifier.id)}>Edit</button>
             </div>
           );
         })}
 
         <button
+          className="Identifer-button"
           onClick={() => {
             setIsModalVisible(true);
           }}
@@ -103,11 +105,11 @@ function Identifiers(props) {
 
       <EditIdentifierModal
         visible={isEditModalVisible}
-        title={'Edit'}
+        title={"Edit"}
         continueAction={editIdentifier}
         closeAction={() => setIsModalVisible(false)}
         setTitle={setTitle}
-        />
+      />
     </div>
   );
 }
