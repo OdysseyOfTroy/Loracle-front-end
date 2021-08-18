@@ -109,14 +109,14 @@ function Sidebar(props) {
             );
           })}
 
-          <Button
-            variant="primary"
+          <button
+            className="New-Category"
             onClick={() => {
               setIsModalVisible(true);
             }}
           >
             New Category
-          </Button>
+          </button>
         </div>
       </div>
       <NewCategoryModal
