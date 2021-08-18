@@ -5,7 +5,6 @@ import "../../css/global.css";
 import "../../css/Dashboard.css";
 import Universalbar from "../UniversalBar";
 import ConfirmationModal from "../Confirmation.Modal";
-import { Button } from "react-bootstrap";
 import NewContainerModal from "../Dashboard/NewContainerModal";
 import EditContainerModal from "./EditContainerModal";
 
@@ -98,14 +97,14 @@ function Dashboard(props) {
               </div>
             );
           })}
-          <Button
-            variant="primary"
+          <button
+            className="new-container"
             onClick={() => {
               setIsModalVisible(true);
             }}
           >
             New container
-          </Button>
+          </button>
         </div>
       </div>
 

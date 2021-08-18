@@ -36,7 +36,7 @@ function ContainerList(
           </button>
         </div>
         <button
-          className="view"
+          className="into-container"
           onClick={() => {
             props.selectContainer(props.id);
             window.location = `/mainpage/${props.id}`;

@@ -78,6 +78,7 @@ function Identifiers(props) {
         })}
 
         <button
+          className="Identifer-button"
           onClick={() => {
             setIsModalVisible(true);
           }}

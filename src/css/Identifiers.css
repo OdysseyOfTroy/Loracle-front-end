@@ -5,3 +5,21 @@
 h2 {
   color: violet;
 }
+
+.Identifer-button {
+  background-color: #15171c;
+  color: violet;
+  border-radius: 8px;
+  border-color: violet;
+  padding: 2%;
+  margin: 2%;
+}
+
+.Information-button {
+  background-color: #15171c;
+  color: violet;
+  border-radius: 8px;
+  border-color: violet;
+  padding: 2%;
+  margin: 2%;
+}

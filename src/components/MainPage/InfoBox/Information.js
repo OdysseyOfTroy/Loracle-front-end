@@ -75,6 +75,7 @@ function Information(props) {
         })}
 
         <button
+          className="Information-button"
           onClick={() => {
             setIsModalVisible(true);
           }}
