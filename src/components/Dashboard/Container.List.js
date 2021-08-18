@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "../../css/Dashboard.css";
 
 function ContainerList(
   props,
   setIsConfirmModalVisible = { setIsConfirmModalVisible },
-  selectContainer = { selectContainer }
+  selectContainer = { selectContainer },
+  setIsEditModalVisible = { setIsEditModalVisible }
 ) {
   return (
     <div className="card">
@@ -28,13 +28,22 @@ function ContainerList(
           <button
             className="button-function view"
             onClick={() => {
-              props.selectContainer(props.id);
-              window.location = `/mainpage/${props.id}`;
+              props.selectContainer(props.id),
+                props.setIsEditModalVisible(true);
             }}
           >
-            View
+            Edit
           </button>
         </div>
+        <button
+          className="view"
+          onClick={() => {
+            props.selectContainer(props.id);
+            window.location = `/mainpage/${props.id}`;
+          }}
+        >
+          View
+        </button>
       </div>
     </div>
   );

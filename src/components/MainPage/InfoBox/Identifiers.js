@@ -5,12 +5,15 @@ import IdentifierService from "../../Connections/Identifier.service";
 import InformationService from "../../Connections/Information.service";
 import ConfirmationModal from "../../Confirmation.Modal";
 import NewIdentifierModal from "./NewIdentifierModal";
+import EditCategoryModal from "../Sidebar/EditCategoryModal";
+import EditIdentifierModal from "./EditIdentifierModal";
 
 function Identifiers(props) {
   const [title, setTitle] = useState("");
   const [currentId, setCurrentId] = useState(-1);
 
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   const onClick = (id) => {
@@ -35,12 +38,27 @@ function Identifiers(props) {
     setCurrentId(id);
   };
 
+  const prepUpdate = (id) => {
+    setIsEditModalVisible(true);
+    setCurrentId(id);
+  }
+
   const createIdentifier = useCallback(() => {
     IdentifierService.create(props.containerId, props.categoryId, title).then(
       () => {
         setIsModalVisible(false);
       }
     );
+  });
+
+  const editIdentifier = useCallback(() => {
+    IdentifierService.update(
+      props.containerId,
+      props.categoryId,
+      currentId,
+      title
+    );
+    setIsEditModalVisible(false);
   });
 
   return (
@@ -54,6 +72,7 @@ function Identifiers(props) {
                 {identifier.title}
               </button>
               <button onClick={() => prepDelete(identifier.id)}>Delete</button>
+              <button onClick={() => prepUpdate(identifier.id)}>Edit</button>
             </div>
           );
         })}
@@ -81,6 +100,14 @@ function Identifiers(props) {
         closeAction={() => setIsModalVisible(false)}
         setTitle={setTitle}
       />
+
+      <EditIdentifierModal
+        visible={isEditModalVisible}
+        title={'Edit'}
+        continueAction={editIdentifier}
+        closeAction={() => setIsModalVisible(false)}
+        setTitle={setTitle}
+        />
     </div>
   );
 }

@@ -13,10 +13,11 @@ class DashboardService {
     return http.post("/containers", params);
   }
 
-  update(id, param, value) {
+  update(id, title, description) {
     let params = {};
     params["container"] = {};
-    params["container"][param] = value;
+    params["container"]["title"] = title;
+    params["container"]["description"] = description;
     return http.put(`/containers/${id}`, params);
   }
 
