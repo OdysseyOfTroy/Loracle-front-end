@@ -1,12 +1,7 @@
 import React from "react";
 import "../../css/Dashboard.css";
 
-function ContainerList(
-  props,
-  setIsConfirmModalVisible = { setIsConfirmModalVisible },
-  selectContainer = { selectContainer },
-  setIsEditModalVisible = { setIsEditModalVisible }
-) {
+function ContainerList(props) {
   return (
     <div className="card">
       <div className="custom-card">
@@ -18,8 +13,8 @@ function ContainerList(
           <button
             className="button-function delete"
             onClick={() => {
-              props.selectContainer(props.id),
-                props.setIsConfirmModalVisible(true);
+              props.selectContainer(props.id);
+              props.setIsConfirmModalVisible(true);
             }}
           >
             {" "}
@@ -28,7 +23,7 @@ function ContainerList(
           <button
             className="button-function view"
             onClick={() => {
-              props.selectContainer(props.id),
+              props.selectContainer(props.id);
                 props.setIsEditModalVisible(true);
             }}
           >

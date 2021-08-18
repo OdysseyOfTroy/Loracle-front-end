@@ -5,7 +5,6 @@ import IdentifierService from "../../Connections/Identifier.service";
 import InformationService from "../../Connections/Information.service";
 import ConfirmationModal from "../../Confirmation.Modal";
 import NewIdentifierModal from "./NewIdentifierModal";
-import EditCategoryModal from "../Sidebar/EditCategoryModal";
 import EditIdentifierModal from "./EditIdentifierModal";
 
 function Identifiers(props) {
@@ -41,7 +40,7 @@ function Identifiers(props) {
   const prepUpdate = (id) => {
     setIsEditModalVisible(true);
     setCurrentId(id);
-  }
+  };
 
   const createIdentifier = useCallback(() => {
     IdentifierService.create(props.containerId, props.categoryId, title).then(
@@ -66,9 +65,8 @@ function Identifiers(props) {
       <div className="col=md-6">
         {props.identifiers.map((identifier, idx) => {
           return (
-            <div>
-              <button onClick={() => onClick(identifier.id)} key={idx}>
-                {" "}
+            <div key={idx}>
+              <button onClick={() => onClick(identifier.id)}>
                 {identifier.title}
               </button>
               <button onClick={() => prepDelete(identifier.id)}>Delete</button>
@@ -104,11 +102,11 @@ function Identifiers(props) {
 
       <EditIdentifierModal
         visible={isEditModalVisible}
-        title={'Edit'}
+        title={"Edit"}
         continueAction={editIdentifier}
         closeAction={() => setIsModalVisible(false)}
         setTitle={setTitle}
-        />
+      />
     </div>
   );
 }

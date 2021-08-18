@@ -3,9 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import propTypes from "prop-types";
 
 function EditCategoryModal(
-  props,
-  setname = { setname },
-  setDescription = { setDescription }
+  props
 ) {
   return (
     <Modal show={props.visible} onHide={props.closeAction}>
@@ -16,7 +14,7 @@ function EditCategoryModal(
       <Modal.Body>
         <form>
           <div className="form-group">
-            <label for="name-label" className="col-form-label">
+            <label htmlFor="name-label" className="col-form-label">
               Name:
             </label>
             <input
@@ -27,7 +25,7 @@ function EditCategoryModal(
             />
           </div>
           <div className="form-group">
-            <label for="Description-text" className="col-form-label">
+            <label htmlFor="Description-text" className="col-form-label">
               Description:
             </label>
             <textarea

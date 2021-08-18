@@ -63,8 +63,8 @@ function Information(props) {
       <div className="col=md-6">
         {props.information.map((information, idx) => {
           return (
-            <div>
-              <button key={idx}>
+            <div key={idx}>
+              <button>
                 {" "}
                 {information.infoTitle} {information.info}
               </button>

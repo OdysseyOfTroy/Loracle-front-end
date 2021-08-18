@@ -5,10 +5,8 @@ import "../../css/Mainpage.css";
 import Universalbar from "../UniversalBar";
 import { useParams } from "react-router-dom";
 import Information from "./InfoBox/Information";
-import ConfirmationModal from "../Confirmation.Modal";
-import IdentifierService from "../Connections/Identifier.service";
 
-function Mainpage(props) {
+function Mainpage() {
   const { containerId } = useParams();
 
   const [categoryId, setCategoryId] = useState(-1);
@@ -16,7 +14,7 @@ function Mainpage(props) {
   const [identifiers, setIdentifiers] = useState([]);
   const [information, setInformation] = useState([]);
 
-  const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
+  
 
   const setIdentifierView = (data, id) => {
     setIdentifiers(data);
@@ -46,7 +44,6 @@ function Mainpage(props) {
           categoryId={categoryId}
           identifiers={identifiers}
           setInformationView={setInformationView}
-          setIsConfirmModalVisible={setIsConfirmModalVisible}
         ></Identifiers>
         <Information
           containerId={containerId}

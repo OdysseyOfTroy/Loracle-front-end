@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import "../../../css/Sidebar.css";
 import IdentifierService from "../../Connections/Identifier.service";
 
 function SidebarItem(
-  props,
-  setIsConfirmModalVisible = { setIsConfirmModalVisible },
-  setCurrentId = { setCurrentId },
-  setIsEditModalVisible = { setIsEditModalVisible }
+  props
 ) {
   const onClick = () => {
     IdentifierService.index(props.containerId, props.id).then((res) => {

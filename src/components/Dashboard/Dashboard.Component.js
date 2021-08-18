@@ -84,12 +84,11 @@ function Dashboard(props) {
         <div className="Cards">
           {containers.map((container, index) => {
             return (
-              <div>
+              <div key={index}>
                 <ContainerList
                   selectContainer={selectContainer}
                   id={container.id}
                   title={container.title}
-                  key={index}
                   description={container.description}
                   setIsConfirmModalVisible={setIsConfirmModalVisible}
                   setIsEditModalVisible={setIsEditModalVisible}
@@ -138,14 +137,3 @@ function Dashboard(props) {
 }
 
 export default Dashboard;
-
-//code that may need to be used again
-
-//create containerlist for each container
-// containers.forEach((container) => {
-//   <ContainerList
-//       id={container.id}
-//       title={container.title}
-//       description={container.description}
-//   />
-// })

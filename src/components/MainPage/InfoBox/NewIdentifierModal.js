@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Modal } from "react-bootstrap";
 import propTypes from "prop-types";
 
-function NewIdentifierModal(props, setTitle = { setTitle }) {
+function NewIdentifierModal(props) {
   return (
     <Modal show={props.visible} onHide={props.closeAction}>
       <Modal.Header>
@@ -12,7 +12,7 @@ function NewIdentifierModal(props, setTitle = { setTitle }) {
       <Modal.Body>
         <form>
           <div className="form-group">
-            <label for="Title-label" className="col-form-label">
+            <label htmlFor="Title-label" className="col-form-label">
               Title:
             </label>
             <input

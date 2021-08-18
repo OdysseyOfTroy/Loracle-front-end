@@ -3,9 +3,7 @@ import { Button, Modal } from "react-bootstrap";
 import propTypes from "prop-types";
 
 function NewInformationModal(
-  props,
-  setInfoTitle = { setInfoTitle },
-  setInfo = { setInfo }
+  props
 ) {
   return (
     <Modal show={props.visible} onHide={props.closeAction}>
@@ -16,7 +14,7 @@ function NewInformationModal(
       <Modal.Body>
         <form>
           <div className="form-group">
-            <label for="Title-label" className="col-form-label">
+            <label htmlFor="Title-label" className="col-form-label">
               Title:
             </label>
             <input
@@ -27,7 +25,7 @@ function NewInformationModal(
             />
           </div>
           <div className="form-group">
-            <label for="Description-text" className="col-form-label">
+            <label htmlFor="Description-text" className="col-form-label">
               Details:
             </label>
             <textarea
