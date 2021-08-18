@@ -22,7 +22,9 @@ function EditInformationModal(
               className="form-control"
               id="title-name"
               onChange={(e) => props.setInfoTitle(e.target.value)}
-            />
+              value={props.infoTitle}
+            >
+            </input>
           </div>
           <div className="form-group">
             <label htmlFor="Description-text" className="col-form-label">
@@ -32,7 +34,9 @@ function EditInformationModal(
               className="form-control"
               id="description-text"
               onChange={(e) => props.setInfo(e.target.value)}
-            ></textarea>
+              value={props.info}
+            >
+            </textarea>
           </div>
         </form>
       </Modal.Body>

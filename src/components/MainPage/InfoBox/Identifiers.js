@@ -60,11 +60,11 @@ function Identifiers(props) {
 
   return (
     <div className="list-row">
-      <div className="col=md-6">
+      <div className="col">
         {props.identifiers.map((identifier, idx) => {
           return (
             <div key={idx}>
-              <button
+              <button className="info-Title"
                 onClick={() => {
                   props.getInformation(identifier.id);
                   props.setActiveComponent("information")
@@ -72,8 +72,8 @@ function Identifiers(props) {
               >
                 {identifier.title}
               </button>
-              <button onClick={() => prepDelete(identifier.id)}>Delete</button>
-              <button onClick={() => prepUpdate(identifier.id)}>Edit</button>
+              <button className="Delete" onClick={() => prepDelete(identifier.id)}>Delete</button>
+              <button className="Edit" onClick={() => prepUpdate(identifier.id)}>Edit</button>
             </div>
           );
         })}
