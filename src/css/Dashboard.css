@@ -17,6 +17,8 @@
     width: 100%;
     background: #0f1014;
     text-align: center;
+    min-width: 400px;
+    max-width: 400px;
 
 }
 
