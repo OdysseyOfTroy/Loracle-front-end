@@ -38,7 +38,7 @@
 .navSidebar-Link {
   display: flex;
   color: violet;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   background-color: #15171c;
@@ -63,7 +63,7 @@
 .sidebar-Link {
     display: flex;
     color: violet;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100%;
     background-color: #15171c;
@@ -79,7 +79,7 @@
 .sidebar-item {
   display: flex;
   color: violet;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   background-color: #15171c;

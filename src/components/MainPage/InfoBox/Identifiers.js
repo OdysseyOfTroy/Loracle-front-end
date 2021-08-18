@@ -23,14 +23,16 @@ function Identifiers(props) {
     );
   };
 
-  const deleteIdentifier = () => {
-    setIsConfirmModalVisible(false);
+  const deleteIdentifier = useCallback(() => {
     IdentifierService.delete(
       props.containerId,
       props.categoryId,
       currentId
-    ).then(() => {});
-  };
+    ).then(() => {
+      setIsConfirmModalVisible(false);
+      props.getIdentifiers(props.categoryId)
+    });
+  });
 
   const prepDelete = (id) => {
     setIsConfirmModalVisible(true);
@@ -41,11 +43,13 @@ function Identifiers(props) {
     setIsEditModalVisible(true);
     setCurrentId(id);
   };
+  
 
   const createIdentifier = useCallback(() => {
     IdentifierService.create(props.containerId, props.categoryId, title).then(
       () => {
         setIsModalVisible(false);
+        props.getIdentifiers(props.categoryId);
       }
     );
   });
@@ -56,8 +60,10 @@ function Identifiers(props) {
       props.categoryId,
       currentId,
       title
-    );
+    ).then(() => {
     setIsEditModalVisible(false);
+    props.getIdentifiers(props.categoryId);
+    })
   });
 
   return (

@@ -5,6 +5,7 @@ import "../../css/Mainpage.css";
 import Universalbar from "../UniversalBar";
 import { useParams } from "react-router-dom";
 import Information from "./InfoBox/Information";
+import IdentifierService from "../Connections/Identifier.service";
 
 function Mainpage() {
   const { containerId } = useParams();
@@ -14,7 +15,11 @@ function Mainpage() {
   const [identifiers, setIdentifiers] = useState([]);
   const [information, setInformation] = useState([]);
 
-  
+  const getIdentifiers = (currentId) => {
+    IdentifierService.index(containerId, currentId).then((res) => {
+      setIdentifierView(res.data, currentId);
+    });
+  };
 
   const setIdentifierView = (data, id) => {
     setIdentifiers(data);
@@ -36,6 +41,7 @@ function Mainpage() {
           containerId={containerId}
           categoryId={categoryId}
           setIdentifierView={setIdentifierView}
+          getIdentifiers={getIdentifiers}
         ></Sidebar>
       </div>
       <div className="identifiers">
@@ -44,6 +50,7 @@ function Mainpage() {
           categoryId={categoryId}
           identifiers={identifiers}
           setInformationView={setInformationView}
+          getIdentifiers={getIdentifiers}
         ></Identifiers>
         <Information
           containerId={containerId}
