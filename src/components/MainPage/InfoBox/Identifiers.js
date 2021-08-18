@@ -2,7 +2,6 @@ import React, { useState, useCallback } from "react";
 
 import "../../../css/Identifiers.css";
 import IdentifierService from "../../Connections/Identifier.service";
-import InformationService from "../../Connections/Information.service";
 import ConfirmationModal from "../../Confirmation.Modal";
 import NewIdentifierModal from "./NewIdentifierModal";
 import EditIdentifierModal from "./EditIdentifierModal";
@@ -14,6 +13,8 @@ function Identifiers(props) {
   const [isConfirmModalVisible, setIsConfirmModalVisible] = useState(false);
   const [isEditModalVisible, setIsEditModalVisible] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false);
+
+  
 
   const deleteIdentifier = useCallback(() => {
     IdentifierService.delete(
@@ -66,6 +67,7 @@ function Identifiers(props) {
               <button
                 onClick={() => {
                   props.getInformation(identifier.id);
+                  props.setActiveComponent("information")
                 }}
               >
                 {identifier.title}

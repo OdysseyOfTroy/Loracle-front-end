@@ -6,7 +6,6 @@ import "../../../css/Sidebar.css";
 import ConfirmationModal from "../../Confirmation.Modal";
 import NewCategoryModal from "./NewCategoryModal";
 import EditCategoryModal from "./EditCategoryModal";
-import IdentifierService from "../../Connections/Identifier.service";
 
 function Sidebar(props) {
   const staticLinks = [
@@ -94,6 +93,7 @@ function Sidebar(props) {
                 setIsEditModalVisible={setIsEditModalVisible}
                 setCurrentId={setCurrentId}
                 getIdentifiers={props.getIdentifiers}
+                setActiveComponent={props.setActiveComponent}
               />
             );
           })}

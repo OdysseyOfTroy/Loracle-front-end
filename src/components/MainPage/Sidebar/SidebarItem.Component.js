@@ -1,6 +1,5 @@
 import React from "react";
 import "../../../css/Sidebar.css";
-import IdentifierService from "../../Connections/Identifier.service";
 
 function SidebarItem(
   props
@@ -19,7 +18,8 @@ function SidebarItem(
   return (
     <div>
       <button className="sidebar-Link" onClick={() => {
-        props.getIdentifiers(props.id)}}>
+        props.getIdentifiers(props.id)
+        props.setActiveComponent("identifiers")}}>
         <span>{props.title}</span>
       </button>
       <div className="side-buttons">
