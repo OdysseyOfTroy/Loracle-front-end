@@ -107,7 +107,7 @@ function Identifiers(props) {
         visible={isEditModalVisible}
         title={"Edit"}
         continueAction={editIdentifier}
-        closeAction={() => setIsModalVisible(false)}
+        closeAction={() => setIsEditModalVisible(false)}
         setTitle={setTitle}
       />
     </div>
