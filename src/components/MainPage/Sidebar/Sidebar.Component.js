@@ -51,8 +51,10 @@ function Sidebar(props) {
   });
 
   const editCategory = useCallback(() => {
-    CategoryService.update(props.containerId, currentId, name, description);
-    setIsEditModalVisible(false);
+    CategoryService.update(props.containerId, currentId, name, description).then(() => {
+      setIsEditModalVisible(false);
+      getCategories();
+    })
   });
 
   //delete selected container
