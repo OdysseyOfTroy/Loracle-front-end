@@ -64,7 +64,7 @@ h2 {
 
 .Edit {
   background: none;
-  color: blue;
+  color: turquoise;
   border-color: violet;
   border-radius: 12px;
   margin-top: 1%;
@@ -74,6 +74,6 @@ h2 {
 }
 
 .Edit:hover {
-  background-color: blue;
+  background-color: turquoise;
   color: black;
 }
