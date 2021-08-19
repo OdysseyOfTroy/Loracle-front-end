@@ -69,9 +69,10 @@ function Dashboard(props) {
       containerId,
       title,
       description
-    );
+    ).then(() => {
     setIsEditModalVisible(false);
     getContainers();
+  })
   });
 
   return (
