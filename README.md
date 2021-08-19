@@ -13,6 +13,8 @@ In the project directory, you can run:
 Runs the app locally.\
 Open [http://localhost:3001](http://localhost:3001) to view it in the browser.
 
+if the application fails to build due to the lack of `node_modules` run `npm install` before attempting again. 
+
 ## API Connections
 
 An environmental variable is used to set up the API url at `src/http-common.js:4`.
